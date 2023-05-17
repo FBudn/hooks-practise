@@ -22,14 +22,11 @@ const InputRef = forwardRef<InputReference, InputRefProps>(
     );
 
     return (
-      <>
-        <input
-          id={id}
-          ref={LocalInputRef}
-          placeholder="Mam ustawiony focus po renderach(useRef, useImperativeHandle, forwardRef)"
-        />
-        <div>Moje id: {id}</div>
-      </>
+      <input
+        id={id}
+        ref={LocalInputRef}
+        placeholder="Mam ustawiony focus po renderach(useRef, useImperativeHandle, forwardRef)"
+      />
     );
   },
 );

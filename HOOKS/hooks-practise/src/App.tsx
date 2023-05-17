@@ -1,10 +1,4 @@
-import React, {
-  useEffect,
-  useId,
-  useLayoutEffect,
-  useRef,
-  useState,
-} from "react";
+import React, { useEffect, useLayoutEffect, useRef, useState } from "react";
 import Input from "./components/Input";
 import InputRef from "./components/InputRef";
 import { MainAppContainer, InputInfo } from "./styles/styles";
@@ -18,9 +12,9 @@ const App: React.FC = () => {
   };
 
   useEffect(() => {
-    console.log("Hej");
+    console.log("Hi I am useEffect");
     return () => {
-      console.log("Pa pa2");
+      console.log("I am clean-up function for useEffect");
     };
   }, []);
 
@@ -30,24 +24,20 @@ const App: React.FC = () => {
   }, []);
 
   useLayoutEffect(() => {
-    console.log(`test`);
+    console.log(`I am useLayoutEffect`);
   }, []);
-
-  const InputId = useId();
 
   return (
     <MainAppContainer>
-      <InputRef ref={ref} id={InputId} />
-      <Input handleInputValue={handleInputValue} id={InputId} />
+      <InputRef ref={ref} id="InputRef" />
+      <Input handleInputValue={handleInputValue} id="Input" />
       <InputInfo>
-        <div>Pokazuję state, czyli wartość z powyższego inputa: </div>
+        <div>Showing state, that is value from input above: </div>
         <div> {text} </div>
       </InputInfo>
-      <div id={InputId}>ja to </div>
-      <div id={InputId}>ja to {InputId}</div>
-      <Button />
-      <Button />
-      <Button />
+      <Button> OnClick I am alerting my id </Button>
+      <Button> OnClick I am alerting my id </Button>
+      <Button> OnClick I am alerting my id </Button>
     </MainAppContainer>
   );
 };

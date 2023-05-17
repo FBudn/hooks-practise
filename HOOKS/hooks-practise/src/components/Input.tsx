@@ -6,15 +6,12 @@ export interface InputProps {
 }
 const Input: React.FC<InputProps> = ({ handleInputValue, id }) => {
   return (
-    <>
-      <input
-        type="text"
-        id={id}
-        onChange={handleInputValue}
-        placeholder="Jestem zarządzany przez useState"
-      />
-      <div>Moje id: {id}</div>
-    </>
+    <input
+      type="text"
+      id={id}
+      onChange={handleInputValue}
+      placeholder="Jestem zarządzany przez useState"
+    />
   );
 };
 

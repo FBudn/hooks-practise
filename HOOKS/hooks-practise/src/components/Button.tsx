@@ -1,6 +1,10 @@
 import React, { useId } from "react";
 
-const Button: React.FC = () => {
+export interface ButtonProps {
+  children: any;
+}
+
+const Button: React.FC<ButtonProps> = ({ children }) => {
   const onButtonClick = (event: any) => {
     alert(event.target.id);
   };
@@ -8,7 +12,7 @@ const Button: React.FC = () => {
   const ButtonId = useId();
   return (
     <button id={ButtonId} type="button" onClick={onButtonClick}>
-      Click me
+      {children}
     </button>
   );
 };
