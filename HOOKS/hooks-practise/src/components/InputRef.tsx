@@ -1,27 +1,37 @@
 import React, { forwardRef, useImperativeHandle, useRef } from "react";
 
-const InputRef = forwardRef(function InputRef(props, ref) {
-  const LocalInputRef = useRef<any>(null);
+export interface InputRefProps {
+  id: any;
+}
+export type InputReference = any;
 
-  useImperativeHandle(
-    ref,
-    () => {
-      return {
-        focus() {
-          LocalInputRef?.current?.focus();
-        },
-      };
-    },
-    [],
-  );
+const InputRef = forwardRef<InputReference, InputRefProps>(
+  ({ id }: InputRefProps, ref) => {
+    const LocalInputRef = useRef<any>(null);
 
-  return (
-    <input
-      {...props}
-      ref={LocalInputRef}
-      placeholder="Mam ustawiony focus po renderach(useRef, useImperativeHandle, forwardRef)"
-    />
-  );
-});
+    useImperativeHandle(
+      ref,
+      () => {
+        return {
+          focus() {
+            LocalInputRef?.current?.focus();
+          },
+        };
+      },
+      [],
+    );
+
+    return (
+      <>
+        <input
+          id={id}
+          ref={LocalInputRef}
+          placeholder="Mam ustawiony focus po renderach(useRef, useImperativeHandle, forwardRef)"
+        />
+        <div>Moje id: {id}</div>
+      </>
+    );
+  },
+);
 
 export default InputRef;
