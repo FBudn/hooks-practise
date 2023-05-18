@@ -6,8 +6,10 @@ import InputRef from "./components/InputRef";
 import { MainAppContainer, InputInfo } from "./styles/styles";
 import Button from "./components/Button";
 import ContextConsumer from "./components/ContextConsumer";
+import MiddleContainer from "./components/MiddleContainer";
 
-export const ColorContext = React.createContext<any>("green");
+type ColorContextType = string | undefined | null;
+export const ColorContext = React.createContext<ColorContextType>("green");
 
 const App: React.FC = () => {
   const [text, setText] = useState("useState: aktualnie pusty input");
@@ -45,6 +47,7 @@ const App: React.FC = () => {
         <Button> OnClick I am alerting my id </Button>
         <Button> OnClick I am alerting my id </Button>
         <ContextConsumer />
+        <MiddleContainer />
       </MainAppContainer>
     </ColorContext.Provider>
   );
