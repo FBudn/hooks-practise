@@ -9,13 +9,13 @@ export interface MiddleContainerProps {
 
 const MiddleContainer: React.FC<MiddleContainerProps> = () => {
   const [callbackArgument, setCallbackArgument] = useState("Argument 3");
-  const handleCallback = (callbackArgument: string | number) => {
+  const handleCallback = () => {
     alert(callbackArgument);
   };
-  const handlerCallback = useCallback(() => handleCallback, [callbackArgument]);
+  const handlerCallback = useCallback(handleCallback, [callbackArgument]);
   return (
     <>
-      <div>Middle component re-render trigger text 4</div>
+      <div>Middle component re-render trigger text 1</div>
       <CallbackChild onClickButton={handlerCallback} />;
     </>
   );
