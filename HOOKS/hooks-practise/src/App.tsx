@@ -7,6 +7,7 @@ import { MainAppContainer, InputInfo } from "./styles/styles";
 import Button from "./components/Button";
 import ContextConsumer from "./components/ContextConsumer";
 import MiddleContainer from "./components/MiddleContainer";
+import ReactMemo from "./components/ReactMemo";
 
 type ColorContextType = string | undefined | null;
 export const ColorContext = React.createContext<ColorContextType>("green");
@@ -47,7 +48,8 @@ const App: React.FC = () => {
         <Button> OnClick I am alerting my id </Button>
         <Button> OnClick I am alerting my id </Button>
         <ContextConsumer />
-        <MiddleContainer />
+        <MiddleContainer number1={1} number2={2} />
+        <ReactMemo />
       </MainAppContainer>
     </ColorContext.Provider>
   );
