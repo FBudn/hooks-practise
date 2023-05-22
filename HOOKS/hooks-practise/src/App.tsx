@@ -10,6 +10,7 @@ import MiddleContainer from "./components/MiddleContainer";
 import ReactMemo from "./components/ReactMemo";
 import TransitionHeavy from "./components/TransitionHeavy";
 import ReducerComp from "./components/ReducerComp";
+import FiringLazyComp from "./components/FiringLazyComp";
 
 type ColorContextType = string | undefined | null;
 export const ColorContext = React.createContext<ColorContextType>("green");
@@ -54,6 +55,7 @@ const App: React.FC = () => {
         <ReactMemo />
         <TransitionHeavy />
         <ReducerComp />
+        <FiringLazyComp />
       </MainAppContainer>
     </ColorContext.Provider>
   );
