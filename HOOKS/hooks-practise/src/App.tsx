@@ -8,6 +8,7 @@ import Button from "./components/Button";
 import ContextConsumer from "./components/ContextConsumer";
 import MiddleContainer from "./components/MiddleContainer";
 import ReactMemo from "./components/ReactMemo";
+import TransitionHeavy from "./components/TransitionHeavy";
 
 type ColorContextType = string | undefined | null;
 export const ColorContext = React.createContext<ColorContextType>("green");
@@ -50,6 +51,7 @@ const App: React.FC = () => {
         <ContextConsumer />
         <MiddleContainer number1={1} number2={2} />
         <ReactMemo />
+        <TransitionHeavy />
       </MainAppContainer>
     </ColorContext.Provider>
   );
