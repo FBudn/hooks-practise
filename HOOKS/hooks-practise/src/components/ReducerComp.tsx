@@ -1,6 +1,8 @@
+/* eslint-disable react/jsx-no-bind */
 /* eslint-disable @typescript-eslint/no-shadow */
 /* eslint-disable @typescript-eslint/restrict-plus-operands */
 import React, { useReducer } from "react";
+import { ButtonStyled, TextInfo, Tilediv } from "../styles/styles";
 
 const ReducerComp = () => {
   const ACTIONS = {
@@ -31,13 +33,14 @@ const ReducerComp = () => {
 
   return (
     <>
-      <button type="button" onClick={increment}>
+      <Tilediv>useReducer</Tilediv>
+      <ButtonStyled type="button" onClick={increment}>
         INCREMENT
-      </button>
-      <div> {state.count} </div>
-      <button type="button" onClick={decrement}>
+      </ButtonStyled>
+      <TextInfo> {state.count} </TextInfo>
+      <ButtonStyled type="button" onClick={decrement}>
         DECREMENT
-      </button>
+      </ButtonStyled>
     </>
   );
 };

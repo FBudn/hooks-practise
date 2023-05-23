@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/promise-function-async */
 /* eslint-disable @typescript-eslint/no-use-before-define */
 import React, { Suspense, lazy } from "react";
+import { ButtonStyled, Tilediv } from "../styles/styles";
 
 const LazyComponent = lazy(() => delayForDemo(import("./LazyComponent")));
 
@@ -12,9 +13,10 @@ const FiringLazyComp = () => {
   };
   return (
     <>
-      <button type="button" onClick={loadLazyComponent}>
+      <Tilediv>React.lazy and Suspence</Tilediv>
+      <ButtonStyled type="button" onClick={loadLazyComponent}>
         Load lazy component
-      </button>
+      </ButtonStyled>
       <div id="lazy-component" style={{ display: "none" }}>
         <Suspense fallback="Loading...">
           <LazyComponent />

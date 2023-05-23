@@ -1,4 +1,9 @@
 import React, { useEffect } from "react";
+import {
+  ButtonStyled,
+  ContextAndMemoContainer,
+  TextInfo,
+} from "../styles/styles";
 
 export interface CallbackChildProps {
   onClickButton: any;
@@ -10,12 +15,12 @@ const CallbackChild: React.FC<CallbackChildProps> = ({ onClickButton }) => {
   }, []);
 
   return (
-    <div>
-      I am showing useCallback in action
-      <button type="button" onClick={onClickButton}>
+    <ContextAndMemoContainer>
+      <TextInfo>I am showing useCallback in action</TextInfo>
+      <ButtonStyled type="button" onClick={onClickButton}>
         Show callback argument
-      </button>
-    </div>
+      </ButtonStyled>
+    </ContextAndMemoContainer>
   );
 };
 

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import ReactMemoChild from "./ReactMemoChild";
+import { ButtonStyled, TextInfo, Tilediv } from "../styles/styles";
 
 const ReactMemo = () => {
   const [count, setCount] = useState(0);
@@ -12,12 +13,12 @@ const ReactMemo = () => {
   });
   return (
     <>
-      <button type="button" onClick={handleCount}>
+      <Tilediv> I am ReactMemo parent </Tilediv>
+      <ButtonStyled type="button" onClick={handleCount}>
         Change my state (ReactMemo Parent)
-      </button>
-      <div>{count}</div>
-      <div> I am ReactMemo parent 2</div>
-      <ReactMemoChild text="I am React.Memo child" number={2} boolean />
+      </ButtonStyled>
+      <TextInfo>{count}</TextInfo>
+      <ReactMemoChild text="String-prop" number={123} boolean />
     </>
   );
 };

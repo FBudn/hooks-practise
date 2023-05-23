@@ -1,22 +1,29 @@
 /* eslint-disable import/no-cycle */
 /* eslint-disable import/no-named-as-default */
 import React, { useEffect, useLayoutEffect, useRef, useState } from "react";
-import Input from "./components/Input";
+import InputState from "./components/InputState";
 import InputRef from "./components/InputRef";
-import { MainAppContainer, InputInfo } from "./styles/styles";
-import Button from "./components/Button";
+import {
+  MainAppContainer,
+  TextInfo,
+  SectionsTile,
+  RowContaier,
+  Tilediv,
+} from "./styles/styles";
+import ButtonId from "./components/ButtonId";
 import ContextConsumer from "./components/ContextConsumer";
-import MiddleContainer from "./components/MiddleContainer";
+import ContextAndMemo from "./components/ContextAndMemo";
 import ReactMemo from "./components/ReactMemo";
 import TransitionHeavy from "./components/TransitionHeavy";
 import ReducerComp from "./components/ReducerComp";
 import FiringLazyComp from "./components/FiringLazyComp";
+import Query from "./components/Query";
 
 type ColorContextType = string | undefined | null;
 export const ColorContext = React.createContext<ColorContextType>("green");
 
 const App: React.FC = () => {
-  const [text, setText] = useState("useState: aktualnie pusty input");
+  const [text, setText] = useState("Empty input now");
 
   const handleInputValue = (e: any) => {
     setText(e.target.value);
@@ -41,21 +48,51 @@ const App: React.FC = () => {
   return (
     <ColorContext.Provider value="purple">
       <MainAppContainer>
-        <InputRef ref={ref} id="InputRef" />
-        <Input handleInputValue={handleInputValue} id="Input" />
-        <InputInfo>
-          <div>Showing state, that is value from input above: </div>
-          <div> {text} </div>
-        </InputInfo>
-        <Button> OnClick I am alerting my id </Button>
-        <Button> OnClick I am alerting my id </Button>
-        <Button> OnClick I am alerting my id </Button>
-        <ContextConsumer />
-        <MiddleContainer number1={1} number2={2} />
-        <ReactMemo />
-        <TransitionHeavy />
-        <ReducerComp />
-        <FiringLazyComp />
+        <RowContaier>
+          <SectionsTile>
+            <InputRef ref={ref} id="InputRef" />
+          </SectionsTile>
+          <SectionsTile>
+            <InputState handleInputValue={handleInputValue} id="Input" />
+            <TextInfo>
+              <div>Showing state, that is value from input above: </div>
+              <div> {text} </div>
+            </TextInfo>
+          </SectionsTile>
+          <SectionsTile>
+            <Tilediv>useId</Tilediv>
+            <ButtonId> OnClick I am alerting my id </ButtonId>
+            <ButtonId> OnClick I am alerting my id </ButtonId>
+            <ButtonId> OnClick I am alerting my id </ButtonId>
+          </SectionsTile>
+        </RowContaier>
+
+        <RowContaier>
+          <SectionsTile>
+            <ContextConsumer />
+          </SectionsTile>
+          <SectionsTile>
+            <ContextAndMemo number1={1} number2={2} />
+          </SectionsTile>
+          <SectionsTile>
+            <ReactMemo />
+          </SectionsTile>
+        </RowContaier>
+
+        <RowContaier>
+          <SectionsTile>
+            <TransitionHeavy />
+          </SectionsTile>
+          <SectionsTile>
+            <ReducerComp />
+          </SectionsTile>
+          <SectionsTile>
+            <FiringLazyComp />
+          </SectionsTile>
+        </RowContaier>
+        <SectionsTile>
+          <Query />
+        </SectionsTile>
       </MainAppContainer>
     </ColorContext.Provider>
   );

@@ -1,4 +1,5 @@
 import React, { useEffect, memo } from "react";
+import { ReactMemoChildStyled, TextInfo } from "../styles/styles";
 
 export interface ReactMemoChildProps {
   text: string;
@@ -15,12 +16,12 @@ const ReactMemoChild: React.FC<ReactMemoChildProps> = ({
     console.log(`ReactMemoChild: I have just rendered `);
   });
   return (
-    <>
-      <div> I am showing props from my React.Memo parent </div>
-      <div>
+    <ReactMemoChildStyled>
+      <TextInfo> I am showing props from my React.Memo parent: </TextInfo>
+      <TextInfo style={{ color: "black", fontStyle: "italic" }}>
         {text}, {number}, {boolean.toString()}
-      </div>
-    </>
+      </TextInfo>
+    </ReactMemoChildStyled>
   );
 };
 

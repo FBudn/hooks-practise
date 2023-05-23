@@ -1,4 +1,6 @@
 import React, { forwardRef, useImperativeHandle, useRef } from "react";
+import { Input, TiledivLong } from "../styles/styles";
+import Informator from "./Informator";
 
 export interface InputRefProps {
   id: any;
@@ -22,11 +24,20 @@ const InputRef = forwardRef<InputReference, InputRefProps>(
     );
 
     return (
-      <input
-        id={id}
-        ref={LocalInputRef}
-        placeholder="Mam ustawiony focus po renderach(useRef, useImperativeHandle, forwardRef)"
-      />
+      <>
+        <TiledivLong>
+          useRef, useImperativeHandle, forwardRef and useEffect{" "}
+        </TiledivLong>
+        <Input
+          id={id}
+          style={{
+            width: "450px",
+          }}
+          ref={LocalInputRef}
+          placeholder="Look at my focus after renders"
+        />
+        <Informator />
+      </>
     );
   },
 );

@@ -1,16 +1,23 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 /* eslint-disable react/require-default-props */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable @typescript-eslint/no-shadow */
 import React, { useCallback, useMemo, useState } from "react";
 import CallbackChild from "./CallbackChild";
+import {
+  ButtonStyled,
+  ContextAndMemoContainer,
+  TextInfo,
+  Tilediv,
+} from "../styles/styles";
 
-export interface MiddleContainerProps {
+export interface ContextAndMemoProps {
   noNeed?: string;
   number1?: number;
   number2?: number;
 }
 
-const MiddleContainer: React.FC<MiddleContainerProps> = ({
+const ContextAndMemo: React.FC<ContextAndMemoProps> = ({
   number1,
   number2,
   noNeed,
@@ -37,15 +44,18 @@ const MiddleContainer: React.FC<MiddleContainerProps> = ({
     setCount(count + 1);
   };
   return (
-    <>
-      <div>Middle component re-render trigger text 1</div>
+    <ContextAndMemoContainer>
+      <Tilediv>useCallback and useMemo </Tilediv>
       <CallbackChild onClickButton={handlerCallback} />
-      <button type="button" onClick={handleCount}>
+      <ButtonStyled type="button" onClick={handleCount}>
         useMemo Tester: {count}
-      </button>
-      <div>{handlerMemo}</div>
-    </>
+      </ButtonStyled>
+      <TextInfo>{handlerMemo}</TextInfo>
+      <TextInfo>
+        <a href="#">SEE HOW IT WORKS</a>
+      </TextInfo>
+    </ContextAndMemoContainer>
   );
 };
 
-export default MiddleContainer;
+export default ContextAndMemo;

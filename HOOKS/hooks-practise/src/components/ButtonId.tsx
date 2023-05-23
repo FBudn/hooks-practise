@@ -1,28 +1,29 @@
 /* eslint-disable import/no-cycle */
 import React, { useContext, useId } from "react";
 import { ColorContext } from "../App";
+import { ButtonStyled } from "../styles/styles";
 
-export interface ButtonProps {
+export interface ButtonIdProps {
   children: any;
 }
 
-const Button: React.FC<ButtonProps> = ({ children }) => {
+const ButtonId: React.FC<ButtonIdProps> = ({ children }) => {
   const color = useContext<any>(ColorContext);
   const onButtonClick = (event: any) => {
     alert(event.target.id);
   };
 
-  const ButtonId = useId();
+  const ButtonIdHook = useId();
   return (
-    <button
-      id={ButtonId}
+    <ButtonStyled
+      id={ButtonIdHook}
       type="button"
       onClick={onButtonClick}
       style={{ color }}
     >
       {children}
-    </button>
+    </ButtonStyled>
   );
 };
 
-export default Button;
+export default ButtonId;

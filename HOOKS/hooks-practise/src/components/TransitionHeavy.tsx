@@ -1,4 +1,5 @@
 import React, { useEffect, useState, useTransition } from "react";
+import { ButtonStyled, TextInfo, Tilediv } from "../styles/styles";
 
 const TransitionHeavy = () => {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -44,18 +45,18 @@ const TransitionHeavy = () => {
   useEffect(showIsPending, [isPending]);
   return (
     <>
-      <div>I am a heavy-transition component</div>
-      <button type="button" onClick={showList}>
+      <Tilediv>useTransition</Tilediv>
+      <ButtonStyled type="button" onClick={showList}>
         Show long loading list
-      </button>
-      <div
+      </ButtonStyled>
+      <TextInfo
         id="pending"
         style={{
           display: "none",
         }}
       >
         Transition is in progress
-      </div>
+      </TextInfo>
       <ul
         id="heavy-list"
         style={{
@@ -76,17 +77,17 @@ const TransitionHeavy = () => {
         <li>Heavy List</li>
         <li>Heavy List</li>
       </ul>
-      <button type="button" onClick={showShortList}>
+      <ButtonStyled type="button" onClick={showShortList}>
         Show hidden light component
-      </button>
-      <div
+      </ButtonStyled>
+      <TextInfo
         id="light-component"
         style={{
           display: "none",
         }}
       >
         I am hidden component
-      </div>
+      </TextInfo>
     </>
   );
 };
