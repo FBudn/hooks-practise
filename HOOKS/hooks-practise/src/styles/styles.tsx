@@ -41,7 +41,7 @@ export const TextInfo = styled.div`
 export const SectionsTile = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: start;
+  justify-content: space-between;
   align-items: center;
   min-width: 30rem;
   min-height: 15rem;
@@ -120,4 +120,17 @@ export const ReactMemoChildStyled = styled.div`
   background-color: #ef85da;
   border-radius: 35px;
   height: 5rem;
+`;
+
+export const InformatorStyled = styled.div`
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+  align-items: center;
+  color: #610c6a;
+  border-top: 2px solid #610c6a;
+  border-width: thin;
+  height: 2rem;
+  font-size: 1.5rem;
+  margin-bottom: 0%;
 `;

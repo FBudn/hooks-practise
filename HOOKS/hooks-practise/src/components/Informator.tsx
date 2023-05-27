@@ -6,14 +6,18 @@ import {
   faLink,
   faCircleInfo,
 } from "@fortawesome/free-solid-svg-icons";
+import { InformatorStyled } from "../styles/styles";
 
 const Informator = () => {
   return (
-    <div>
-      <FontAwesomeIcon icon={faClipboardQuestion} />
-      <FontAwesomeIcon icon={faLink} />
-      <FontAwesomeIcon icon={faCircleInfo} />
-    </div>
+    <InformatorStyled>
+      <FontAwesomeIcon
+        style={{ cursor: "pointer" }}
+        icon={faClipboardQuestion}
+      />
+      <FontAwesomeIcon style={{ cursor: "pointer" }} icon={faLink} />
+      <FontAwesomeIcon style={{ cursor: "pointer" }} icon={faCircleInfo} />
+    </InformatorStyled>
   );
 };
 
