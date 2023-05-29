@@ -3,6 +3,7 @@
 /* eslint-disable @typescript-eslint/restrict-plus-operands */
 import React, { useReducer } from "react";
 import { ButtonStyled, TextInfo, Tilediv } from "../styles/styles";
+import Informator from "./Informator";
 
 const ReducerComp = () => {
   const ACTIONS = {
@@ -41,6 +42,7 @@ const ReducerComp = () => {
       <ButtonStyled type="button" onClick={decrement}>
         DECREMENT
       </ButtonStyled>
+      <Informator />
     </>
   );
 };

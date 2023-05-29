@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import ReactMemoChild from "./ReactMemoChild";
 import { ButtonStyled, TextInfo, Tilediv } from "../styles/styles";
+import Informator from "./Informator";
 
 const ReactMemo = () => {
   const [count, setCount] = useState(0);
@@ -19,6 +20,7 @@ const ReactMemo = () => {
       </ButtonStyled>
       <TextInfo>{count}</TextInfo>
       <ReactMemoChild text="String-prop" number={123} boolean />
+      <Informator />
     </>
   );
 };

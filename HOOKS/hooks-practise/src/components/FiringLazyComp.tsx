@@ -2,6 +2,7 @@
 /* eslint-disable @typescript-eslint/no-use-before-define */
 import React, { Suspense, lazy } from "react";
 import { ButtonStyled, Tilediv } from "../styles/styles";
+import Informator from "./Informator";
 
 const LazyComponent = lazy(() => delayForDemo(import("./LazyComponent")));
 
@@ -22,6 +23,7 @@ const FiringLazyComp = () => {
           <LazyComponent />
         </Suspense>
       </div>
+      <Informator />
     </>
   );
 };

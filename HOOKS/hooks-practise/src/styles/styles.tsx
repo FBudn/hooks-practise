@@ -119,7 +119,7 @@ export const ReactMemoChildStyled = styled.div`
   color: #610c6a;
   background-color: #ef85da;
   border-radius: 35px;
-  height: 5rem;
+  height: 4rem;
 `;
 
 export const InformatorStyled = styled.div`

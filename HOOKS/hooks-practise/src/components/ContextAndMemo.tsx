@@ -10,6 +10,7 @@ import {
   TextInfo,
   Tilediv,
 } from "../styles/styles";
+import Informator from "./Informator";
 
 export interface ContextAndMemoProps {
   noNeed?: string;
@@ -51,9 +52,7 @@ const ContextAndMemo: React.FC<ContextAndMemoProps> = ({
         useMemo Tester: {count}
       </ButtonStyled>
       <TextInfo>{handlerMemo}</TextInfo>
-      <TextInfo>
-        <a href="#">SEE HOW IT WORKS</a>
-      </TextInfo>
+      <Informator />
     </ContextAndMemoContainer>
   );
 };

@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useTransition } from "react";
 import { ButtonStyled, TextInfo, Tilediv } from "../styles/styles";
+import Informator from "./Informator";
 
 const TransitionHeavy = () => {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -88,6 +89,7 @@ const TransitionHeavy = () => {
       >
         I am hidden component
       </TextInfo>
+      <Informator />
     </>
   );
 };

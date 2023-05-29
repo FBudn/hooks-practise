@@ -8,6 +8,7 @@
 import React from "react";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { ButtonStyled, TextInfo, Tilediv } from "../styles/styles";
+import Informator from "./Informator";
 
 const POSTS = [
   { id: "1", title: "post1" },
@@ -57,6 +58,7 @@ const Query = () => {
       >
         Add new post by React Query
       </ButtonStyled>
+      <Informator />
     </>
   );
 };

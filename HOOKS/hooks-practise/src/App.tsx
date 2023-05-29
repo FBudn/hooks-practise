@@ -17,6 +17,7 @@ import TransitionHeavy from "./components/TransitionHeavy";
 import ReducerComp from "./components/ReducerComp";
 import FiringLazyComp from "./components/FiringLazyComp";
 import Query from "./components/Query";
+import Informator from "./components/Informator";
 
 type ColorContextType = string | undefined | null;
 export const ColorContext = React.createContext<ColorContextType>("green");
@@ -63,6 +64,7 @@ const App: React.FC = () => {
             <ButtonId> OnClick I am alerting my id </ButtonId>
             <ButtonId> OnClick I am alerting my id </ButtonId>
             <ButtonId> OnClick I am alerting my id </ButtonId>
+            <Informator />
           </SectionsTile>
         </RowContaier>
 
