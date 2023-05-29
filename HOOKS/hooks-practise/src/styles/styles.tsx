@@ -49,9 +49,9 @@ export const SectionsTile = styled.div`
   margin: 5px;
   background-color: white;
   border-radius: 35px;
-  border-color: rgb(223, 217, 217);
+  // border-color: #6ddfff;
   border: 1px;
-  box-shadow: 3px 3px 3px 3px rgb(223, 217, 217);
+  box-shadow: 3px 3px 3px 3px #084f63;
   padding: 10px;
   z-index: 0;
   :hover {

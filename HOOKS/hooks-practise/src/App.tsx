@@ -5,7 +5,6 @@ import InputState from "./components/InputState";
 import InputRef from "./components/InputRef";
 import {
   MainAppContainer,
-  TextInfo,
   SectionsTile,
   RowContaier,
   Tilediv,
@@ -53,11 +52,11 @@ const App: React.FC = () => {
             <InputRef ref={ref} id="InputRef" />
           </SectionsTile>
           <SectionsTile>
-            <InputState handleInputValue={handleInputValue} id="Input" />
-            <TextInfo>
-              <div>Showing state, that is value from input above: </div>
-              <div> {text} </div>
-            </TextInfo>
+            <InputState
+              handleInputValue={handleInputValue}
+              id="Input"
+              text={text}
+            />
           </SectionsTile>
           <SectionsTile>
             <Tilediv>useId</Tilediv>

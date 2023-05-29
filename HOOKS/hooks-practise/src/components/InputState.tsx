@@ -1,11 +1,17 @@
 import React from "react";
-import { Tilediv, Input } from "../styles/styles";
+import { Tilediv, Input, TextInfo } from "../styles/styles";
+import Informator from "./Informator";
 
 export interface InputStateProps {
   handleInputValue: (e: any) => void;
   id: any;
+  text: any;
 }
-const InputState: React.FC<InputStateProps> = ({ handleInputValue, id }) => {
+const InputState: React.FC<InputStateProps> = ({
+  handleInputValue,
+  id,
+  text,
+}) => {
   return (
     <>
       <Tilediv>useState</Tilediv>
@@ -15,6 +21,11 @@ const InputState: React.FC<InputStateProps> = ({ handleInputValue, id }) => {
         onChange={handleInputValue}
         placeholder="I am handle by useState"
       />
+      <TextInfo>
+        <div>Showing state, that is value from input above: </div>
+        <div> {text} </div>
+      </TextInfo>
+      <Informator />
     </>
   );
 };
