@@ -39,6 +39,7 @@ const Query = () => {
   });
 
   if (postsQuery.isLoading) return <h1> Loading... </h1>;
+  if (newPostsMutation.isLoading) return <h1> Loading... </h1>;
   if (postsQuery.isError) return <pre>{JSON.stringify(postsQuery.error)}</pre>;
 
   return (

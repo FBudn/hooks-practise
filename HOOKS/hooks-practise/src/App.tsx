@@ -18,6 +18,8 @@ import ReducerComp from "./components/ReducerComp";
 import FiringLazyComp from "./components/FiringLazyComp";
 import Query from "./components/Query";
 import Informator from "./components/Informator";
+import LayoutEffectComp from "./components/LayoutEffectComp";
+import ReduxComp from "./components/ReduxComp";
 
 type ColorContextType = string | undefined | null;
 export const ColorContext = React.createContext<ColorContextType>("green");
@@ -48,6 +50,9 @@ const App: React.FC = () => {
   return (
     <ColorContext.Provider value="purple">
       <MainAppContainer>
+        <SectionsTile>
+          <LayoutEffectComp />
+        </SectionsTile>
         <RowContaier>
           <SectionsTile>
             <InputRef ref={ref} id="InputRef" />
@@ -93,6 +98,9 @@ const App: React.FC = () => {
         </RowContaier>
         <SectionsTile>
           <Query />
+        </SectionsTile>
+        <SectionsTile>
+          <ReduxComp />
         </SectionsTile>
       </MainAppContainer>
     </ColorContext.Provider>

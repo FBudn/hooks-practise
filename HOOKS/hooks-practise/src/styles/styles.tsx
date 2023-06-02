@@ -134,3 +134,39 @@ export const InformatorStyled = styled.div`
   font-size: 1.5rem;
   margin-bottom: 0%;
 `;
+
+export const SoloIconContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  font-size: 1.5rem;
+  cursor: pointer;
+  :hover {
+    color: #6ddfff;
+  }
+`;
+
+export const OnlyOnHoover = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  min-width: 30rem;
+  min-height: 15rem;
+  gap: 1rem;
+  margin-top: -50px;
+  background-color: white;
+  border-radius: 35px;
+  // border-color: #6ddfff;
+  border: 1px;
+  box-shadow: 3px 3px 3px 3px #084f63;
+  padding: 10px;
+  z-index: 10000000000;
+  position: absolute;
+  :hover {
+    //border: 3px solid blueviolet;
+    box-shadow: 3px 3px 3px 3px blueviolet;
+    border: 2px solid blueviolet;
+  }
+`;
