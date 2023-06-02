@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-implied-eval */
 /* eslint-disable no-param-reassign */
 /* eslint-disable @typescript-eslint/no-use-before-define */
 import { createSlice } from "@reduxjs/toolkit";
