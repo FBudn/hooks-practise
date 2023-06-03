@@ -9,7 +9,7 @@ export const incrementThunkFn = createAsyncThunk(
   "counterThunk/incrementThunkFn",
   () => {
     setTimeout(() => {
-      console.log(`hej`);
+      console.log(`Im async thunk function`);
     }, 2000);
   },
 );

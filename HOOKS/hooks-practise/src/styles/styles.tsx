@@ -170,3 +170,33 @@ export const OnlyOnHoover = styled.div`
     border: 2px solid blueviolet;
   }
 `;
+export const RowInsideSectionDiv = styled.div`
+  display: flex;
+  width: 100%;
+  height: 100%;
+  justify-content: space-around;
+  align-items: center;
+`;
+
+export const MainRowInsideSectionDiv = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  gap: 25px;
+`;
+export const InsideSectionDivColumn = styled.div`
+  display: flex;
+  width: 15rem;
+  height: 10rem;
+  gap: 10px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  font-size: 1.5rem;
+  border-right: 1px solid #610c6a;
+  border-left: 1px solid #610c6a;
+`;
