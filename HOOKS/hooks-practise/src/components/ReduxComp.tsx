@@ -32,7 +32,7 @@ const ReduxComp = () => {
         </InsideSectionDivColumn>
         <InsideSectionDivColumn>
           <ButtonStyled onClick={() => dispatch(incrementThunkFn())}>
-            Increment with thunk
+            Increment with thunk (2 sec delay)
           </ButtonStyled>
           <div>{countThunk}</div>
         </InsideSectionDivColumn>
