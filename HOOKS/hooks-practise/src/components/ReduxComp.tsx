@@ -8,12 +8,14 @@ import {
   Tilediv,
 } from "../styles/styles";
 import { decrement, increment } from "./ReduxSlice";
+import { incrementSaga } from "./ReduxSaga";
 import { incrementThunkFn } from "./ReduxThunk";
 
 const ReduxComp = () => {
   const count = useSelector((state: any) => state.counter.count);
   const countThunk = useSelector((state: any) => state.counterThunk.countThunk);
-  // const countThunk = useSelector((state: any) => state.counterThunk.countThunk);
+  const countSaga = useSelector((state: any) => state.counterSaga.countSaga);
+
   const dispatch = useDispatch<any>();
   return (
     <MainRowInsideSectionDiv>
@@ -34,8 +36,13 @@ const ReduxComp = () => {
           </ButtonStyled>
           <div>{countThunk}</div>
         </InsideSectionDivColumn>
+        <InsideSectionDivColumn>
+          <ButtonStyled onClick={() => dispatch(incrementSaga())}>
+            Increment with saga (2 sec delay)
+          </ButtonStyled>
+          <div>{countSaga}</div>
+        </InsideSectionDivColumn>
       </RowInsideSectionDiv>
-      \
     </MainRowInsideSectionDiv>
   );
 };
