@@ -10,6 +10,7 @@ import {
 import { decrement, increment } from "./ReduxSlice";
 import { incrementSaga } from "./ReduxSaga";
 import { incrementThunkFn } from "./ReduxThunk";
+import Informator from "./Informator";
 
 const ReduxComp = () => {
   const count = useSelector((state: any) => state.counter.count);
@@ -44,6 +45,7 @@ const ReduxComp = () => {
           <div>{countSaga}</div>
         </InsideSectionDivColumn>
       </RowInsideSectionDiv>
+      <Informator />
     </MainRowInsideSectionDiv>
   );
 };

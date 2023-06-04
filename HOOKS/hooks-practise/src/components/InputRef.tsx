@@ -30,9 +30,6 @@ const InputRef = forwardRef<InputReference, InputRefProps>(
         </TiledivLong>
         <Input
           id={id}
-          style={{
-            width: "450px",
-          }}
           ref={LocalInputRef}
           placeholder="Look at my focus after renders"
         />

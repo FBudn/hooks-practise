@@ -4,6 +4,7 @@ export const MainAppContainer = styled.div`
   display: flex;
   flex-direction: column;
   text-align: center;
+  max-width: 100vw;
   gap: 25px;
   //background-color: #46d1f7;
   background: linear-gradient(
@@ -43,7 +44,30 @@ export const SectionsTile = styled.div`
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  min-width: 30rem;
+  min-width: 27rem;
+  max-width: 27rem;
+  min-height: 15rem;
+  gap: 1rem;
+  margin: 5px;
+  background-color: white;
+  border-radius: 35px;
+  // border-color: #6ddfff;
+  border: 1px;
+  box-shadow: 3px 3px 3px 3px #084f63;
+  padding: 10px;
+  z-index: 0;
+  :hover {
+    //border: 3px solid blueviolet;
+    box-shadow: 3px 3px 3px 3px blueviolet;
+    border: 2px solid blueviolet;
+  }
+`;
+
+export const SectionsTileLong = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
   min-height: 15rem;
   gap: 1rem;
   margin: 5px;
@@ -64,7 +88,7 @@ export const SectionsTile = styled.div`
 export const Tilediv = styled.div`
   display: flex;
   flex-wrap: wrap;
-  width: 35rem;
+  width: 25rem;
   justify-content: center;
   align-items: center;
   border: 3px solid;
@@ -77,7 +101,7 @@ export const Tilediv = styled.div`
 export const TiledivLong = styled.div`
   display: flex;
   flex-wrap: wrap;
-  width: 35rem;
+  width: 27rem;
   justify-content: center;
   align-items: center;
   border: 3px solid;
@@ -89,7 +113,7 @@ export const TiledivLong = styled.div`
 `;
 
 export const Input = styled.input`
-  width: 450px;
+  width: 25rem;
   height: 30px;
   padding-left: 15px;
   border: 1px solid blueviolet;
@@ -110,6 +134,7 @@ export const ButtonStyled = styled.button`
   height: 30px;
   border-color: #610c6a;
   box-shadow: 2px 2px 2px 2px rgb(244, 126, 220);
+  font-weight: 600;
 `;
 
 export const ReactMemoChildStyled = styled.div`
@@ -190,6 +215,7 @@ export const MainRowInsideSectionDiv = styled.div`
 export const InsideSectionDivColumn = styled.div`
   display: flex;
   width: 15rem;
+  padding: 10px;
   height: 10rem;
   gap: 10px;
   flex-direction: column;

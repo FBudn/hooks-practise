@@ -1,6 +1,7 @@
 .body {
     display: flex;
     flex-direction: column;
+    width: 100%;
     align-items: center;
     background-color: #6ddfff;
     padding: 0;

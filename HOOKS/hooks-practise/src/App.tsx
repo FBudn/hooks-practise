@@ -8,6 +8,7 @@ import {
   SectionsTile,
   RowContaier,
   Tilediv,
+  SectionsTileLong,
 } from "./styles/styles";
 import ButtonId from "./components/ButtonId";
 import ContextConsumer from "./components/ContextConsumer";
@@ -50,9 +51,9 @@ const App: React.FC = () => {
   return (
     <ColorContext.Provider value="purple">
       <MainAppContainer>
-        <SectionsTile>
+        <SectionsTileLong>
           <LayoutEffectComp />
-        </SectionsTile>
+        </SectionsTileLong>
         <RowContaier>
           <SectionsTile>
             <InputRef ref={ref} id="InputRef" />
@@ -96,12 +97,12 @@ const App: React.FC = () => {
             <FiringLazyComp />
           </SectionsTile>
         </RowContaier>
-        <SectionsTile>
+        <SectionsTileLong>
           <Query />
-        </SectionsTile>
-        <SectionsTile>
+        </SectionsTileLong>
+        <SectionsTileLong>
           <ReduxComp />
-        </SectionsTile>
+        </SectionsTileLong>
       </MainAppContainer>
     </ColorContext.Provider>
   );
