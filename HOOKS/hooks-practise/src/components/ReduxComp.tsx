@@ -40,6 +40,7 @@ const ReduxComp = () => {
           <ButtonStyled onClick={() => dispatch(incrementSaga())}>
             Increment with saga (2 sec delay)
           </ButtonStyled>
+          <h6 style={{ marginTop: -5 }}>& takeEvery</h6>
           <div>{countSaga}</div>
         </InsideSectionDivColumn>
       </RowInsideSectionDiv>

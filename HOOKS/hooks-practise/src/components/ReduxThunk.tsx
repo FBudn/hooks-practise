@@ -7,10 +7,13 @@ export const initialState = {
   countThunk: 0,
 };
 
-async function delay(milliseconds: number, count: number): Promise<number> {
-  return new Promise<number>((resolve) => {
+async function delay(
+  milliseconds: number,
+  text: string,
+): Promise<number | string> {
+  return new Promise<number | string>((resolve) => {
     setTimeout(() => {
-      resolve(count);
+      resolve(text);
     }, milliseconds);
   });
 }
@@ -18,8 +21,8 @@ async function delay(milliseconds: number, count: number): Promise<number> {
 export const incrementThunkFn = createAsyncThunk(
   "counterThunk/incrementThunkFn",
   async () => {
-    const response = await delay(2000, 2);
-    return response;
+    const response = await delay(2000, "Increment by thunk made");
+    console.log(response);
   },
 );
 /*

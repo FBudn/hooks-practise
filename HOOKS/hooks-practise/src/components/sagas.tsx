@@ -3,12 +3,6 @@
 import { takeEvery, put, delay } from "redux-saga/effects";
 import { incrementSaga, incrementSagaAsync } from "./ReduxSaga";
 
-/* const delay = (time: any) => {
-  setTimeout(() => {
-    console.log("Saga delay");
-  }, time);
-}; */
-
 function* IncrementAsync() {
   yield delay(2000);
   yield put(incrementSagaAsync());

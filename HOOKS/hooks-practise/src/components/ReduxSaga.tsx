@@ -21,8 +21,8 @@ export const sliceCountSaga = createSlice({
     incrementSagaAsync: (state) => {
       state.countSaga += 1;
     },
-    incrementSaga: (state) => {
-      state.countSaga += 0;
+    incrementSaga: () => {
+      console.log(`Saga button clicked caught`);
     },
   },
 });
