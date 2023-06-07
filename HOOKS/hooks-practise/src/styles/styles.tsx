@@ -121,7 +121,7 @@ export const Input = styled.input`
   cursor: pointer;
 `;
 
-export const ContextAndMemoContainer = styled.div`
+export const CallbackAndMemoContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -179,6 +179,7 @@ export const OnlyOnHoover = styled.div`
   align-items: center;
   min-width: 30rem;
   min-height: 15rem;
+  bottom: 250%;
   gap: 1rem;
   margin-top: -50px;
   background-color: white;
@@ -188,7 +189,7 @@ export const OnlyOnHoover = styled.div`
   box-shadow: 3px 3px 3px 3px #084f63;
   padding: 10px;
   z-index: 10000000000;
-  position: absolute;
+  position: relative;
   :hover {
     //border: 3px solid blueviolet;
     box-shadow: 3px 3px 3px 3px blueviolet;
@@ -219,7 +220,7 @@ export const InsideSectionDivColumn = styled.div`
   height: 10rem;
   gap: 10px;
   flex-direction: column;
-  justify-content: center;
+  justify-content: start;
   align-items: center;
   align-content: center;
   font-size: 1.5rem;

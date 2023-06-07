@@ -13,14 +13,18 @@ import sliceCountThunk from "./ReduxThunk";
 import sliceCountSaga from "./ReduxSaga";
 import { watchIncrement } from "./sagas";
 
+// store do reduxa
+
 const sagaMiddleware = createSagaMiddleware();
 
+// podpinam reducery z różnych slice'ów
 export const rootReducer = combineReducers({
   counter: sliceCount,
   counterThunk: sliceCountThunk,
   counterSaga: sliceCountSaga,
 });
-
+// tworzę sklep podpinam middlewary
 export default createStore(rootReducer, applyMiddleware(thunk, sagaMiddleware));
 
+// obserwuje akcję dla sagi
 sagaMiddleware.run(watchIncrement);

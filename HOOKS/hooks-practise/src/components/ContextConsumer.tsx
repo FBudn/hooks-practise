@@ -5,6 +5,7 @@ import { Tilediv, TextInfo } from "../styles/styles";
 import Informator from "./Informator";
 
 const ContextConsumer = () => {
+  // po prostu korzystam tu z kontekstu - provider jest w App.tsx
   const color = useContext<any>(ColorContext);
 
   return (

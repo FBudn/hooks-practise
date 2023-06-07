@@ -12,8 +12,28 @@ import {
   SoloIconContainer,
 } from "../styles/styles";
 
+// tu się bawię bo chce po najechaniu na ikonki pokazywać info czym jest hook jak działa + link do dokumentacji
+
 const Informator = () => {
   const [isHovering, setIsHovering] = useState(false);
+
+  /* const hide = () => {
+    const left: any = document.getElementById(`left-icon-id`);
+    const middle: any = document.getElementById(`middle-icon-id`);
+    const right: any = document.getElementById(`right-icon-id`);
+    if (isHovering) {
+      middle.style.dispay = "none";
+      right.style.dispplay = "none";
+    }
+    if (middle.isHovering === true) {
+      left.style.dispay = "none";
+      right.style.dispplay = "none";
+    }
+    if (right.isHovering === true) {
+      middle.style.dispay = "none";
+      left.style.dispplay = "none";
+    }
+  }; */
 
   const handleMouseOver = () => {
     setIsHovering(true);
@@ -26,12 +46,12 @@ const Informator = () => {
   return (
     <InformatorStyled>
       {isHovering && (
-        <OnlyOnHoover>
+        <OnlyOnHoover id="hover-id">
           <h2>Only visible when hovering div</h2>
           <h2>bobbyhadz.com</h2>
         </OnlyOnHoover>
       )}
-      <SoloIconContainer>
+      <SoloIconContainer id="left-icon-id">
         <FontAwesomeIcon
           icon={faClipboardQuestion}
           onMouseOver={handleMouseOver}
@@ -39,9 +59,9 @@ const Informator = () => {
         />
       </SoloIconContainer>
       <SoloIconContainer>
-        <FontAwesomeIcon icon={faLink} />
+        <FontAwesomeIcon id="middle-icon-id" icon={faLink} />
       </SoloIconContainer>
-      <SoloIconContainer>
+      <SoloIconContainer id="right-icon-id">
         <FontAwesomeIcon icon={faCircleInfo} />
       </SoloIconContainer>
     </InformatorStyled>

@@ -7,6 +7,8 @@ export interface InputStateProps {
   id: any;
   text: any;
 }
+// input oparty na useState zadeklarowanym w App.tsx
+
 const InputState: React.FC<InputStateProps> = ({
   handleInputValue,
   id,

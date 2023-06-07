@@ -12,6 +12,7 @@ const ReactMemoChild: React.FC<ReactMemoChildProps> = ({
   number,
   boolean,
 }) => {
+  // sprawdzam kiedy się renderuje i czy działa memo
   useEffect(() => {
     console.log(`ReactMemoChild: I have just rendered `);
   });
@@ -25,4 +26,5 @@ const ReactMemoChild: React.FC<ReactMemoChildProps> = ({
   );
 };
 
+// owinięcie w memo
 export default memo(ReactMemoChild);

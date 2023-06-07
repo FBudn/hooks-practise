@@ -7,6 +7,7 @@ export const initialState = {
   countThunk: 0,
 };
 
+// funkcja oparta na Promise do opóźnienia po prostu działania incrementThunkFn
 async function delay(
   milliseconds: number,
   text: string,
@@ -18,6 +19,7 @@ async function delay(
   });
 }
 
+// tu sama funkcja thunk od razu wyeksportowana, przechwyca akcję po kliknięciu buttona i zwraca info o tym, że extrareducer został opóźniony
 export const incrementThunkFn = createAsyncThunk(
   "counterThunk/incrementThunkFn",
   async () => {
@@ -51,5 +53,5 @@ export const sliceCountThunk = createSlice({
   },
 });
 
-export const { increment } = sliceCountThunk.actions;
+// export const { increment } = sliceCountThunk.actions;
 export default sliceCountThunk.reducer;

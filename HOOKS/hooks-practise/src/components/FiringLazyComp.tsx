@@ -4,9 +4,11 @@ import React, { Suspense, lazy } from "react";
 import { ButtonStyled, Tilediv } from "../styles/styles";
 import Informator from "./Informator";
 
+// import z użyciem lazy
 const LazyComponent = lazy(() => delayForDemo(import("./LazyComponent")));
 
 const FiringLazyComp = () => {
+  // tu po prostu triggeruje na klik render LazyComponentu i widzę, że chyba warto wrzucić opóźnienie
   const loadLazyComponent = () => {
     const element: any = document.getElementById(`lazy-component`);
     if (element.style.display === "none") element.style.display = "flex";

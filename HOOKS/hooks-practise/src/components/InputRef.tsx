@@ -9,6 +9,7 @@ export type InputReference = any;
 
 const InputRef = forwardRef<InputReference, InputRefProps>(
   ({ id }: InputRefProps, ref) => {
+    // tu po prostu input oparty na referencjach z useEffectem w App.tsx
     const LocalInputRef = useRef<any>(null);
 
     useImperativeHandle(
@@ -26,7 +27,7 @@ const InputRef = forwardRef<InputReference, InputRefProps>(
     return (
       <>
         <TiledivLong>
-          useRef, useImperativeHandle, forwardRef and useEffect{" "}
+          useRef, useImperativeHandle, forwardRef and useEffect
         </TiledivLong>
         <Input
           id={id}

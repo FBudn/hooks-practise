@@ -4,10 +4,16 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import { createSlice } from "@reduxjs/toolkit";
 
+// funkcje "sagi" są w pliku sagas.tsx
+// tu rozpiska do countera pod sagę prostego z dodawaniem tylko
+
 export const initialState = {
   countSaga: 0,
 };
 
+// na dole zbędne increment i decrement w sumie i dwie funkcje do odpalenia asynchronicznie
+// przechwytuję incrementSaga(która nie dosiega już reducera), które na klika w buttonie tylko wyświetla info a potem działa
+// incrementSagaAsync, które zmienia już stan. Patrz: sagas.tsx
 export const sliceCountSaga = createSlice({
   name: "counterSaga",
   initialState,

@@ -6,11 +6,13 @@ import { ButtonStyled, TextInfo, Tilediv } from "../styles/styles";
 import Informator from "./Informator";
 
 const ReducerComp = () => {
+  // akcje zadeklarowane w wygodniejszy sposób, potem autouzupełnianie działa
   const ACTIONS = {
     INCREMENT: "increment",
     DECREMENT: "decrement",
   };
 
+  // prosty reducer klasycznie do countera
   const reducer = (state: any, action: any) => {
     switch (action.type) {
       case ACTIONS.INCREMENT:
@@ -22,8 +24,10 @@ const ReducerComp = () => {
     }
   };
 
+  // główna konstrukcja useReducera
   const [state, dispatch] = useReducer(reducer, { count: 0 });
 
+  // owinięcie w funkcję dispatcha
   function increment() {
     dispatch({ type: ACTIONS.INCREMENT });
   }
@@ -33,6 +37,7 @@ const ReducerComp = () => {
   }
 
   return (
+    // counter do stestowania działania
     <>
       <Tilediv>useReducer</Tilediv>
       <ButtonStyled type="button" onClick={increment}>

@@ -8,12 +8,15 @@ export interface ButtonIdProps {
 }
 
 const ButtonId: React.FC<ButtonIdProps> = ({ children }) => {
+  // useContext tu jest dodatkowo
   const color = useContext<any>(ColorContext);
+
   const onButtonClick = (event: any) => {
     alert(event.target.id);
   };
-
+  // chodzi o użycie useId tu
   const ButtonIdHook = useId();
+
   return (
     <ButtonStyled
       id={ButtonIdHook}
