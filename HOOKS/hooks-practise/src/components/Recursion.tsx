@@ -7,12 +7,12 @@ const Recursion = () => {
   // spacja
   const recursionFn: any = (arrayBasic: any) => {
     // const arrayBasic = [1, 2, 3, 4, 5, 6];
-    const index = 0;
+    // const index = 0;
     // const sum = arrayBasic.reduce((total, accumulator) => total + accumulator);
-    if (arrayBasic[index] === undefined) {
-      return 0;
+    if (arrayBasic.length === 1) {
+      return arrayBasic[0];
     }
-    return recursionFn(arrayBasic[index] + arrayBasic[index - 1]);
+    return arrayBasic.pop() + recursionFn(arrayBasic);
   };
   return (
     <>
