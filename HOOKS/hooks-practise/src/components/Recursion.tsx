@@ -6,14 +6,16 @@ import { TextInfo, Tilediv } from "../styles/styles";
 const Recursion = () => {
   // spacja
   const recursionFn: any = (arrayBasic: any) => {
-    // const arrayBasic = [1, 2, 3, 4, 5, 6];
-    // const index = 0;
-    // const sum = arrayBasic.reduce((total, accumulator) => total + accumulator);
+    // przypadek bazowy: gdy mam jeden element w tablicy to go zwracam
     if (arrayBasic.length === 1) {
       return arrayBasic[0];
     }
+    // .pop() usuwa i zwraca ostatni element z tablicy więc gdy ją dostaję z argumenty funkcji
+    // i tablica ma więcej niż 1 element, jej ostatni element jest usuwany i zwrócony
+    // czyli najpierw 6 + kolejne wywołanie funkcji, które da (5 + kolejne wywołanie funkcji) itd.
     return arrayBasic.pop() + recursionFn(arrayBasic);
   };
+
   return (
     <>
       <Tilediv>Rcursion component and recursion function </Tilediv>
