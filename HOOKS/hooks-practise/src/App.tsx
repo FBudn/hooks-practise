@@ -21,6 +21,7 @@ import Query from "./components/Query";
 import Informator from "./components/Informator";
 import LayoutEffectComp from "./components/LayoutEffectComp";
 import ReduxComp from "./components/ReduxComp";
+import Recursion from "./components/Recursion";
 
 // tworzę kontekstu
 type ColorContextType = string | undefined | null;
@@ -109,6 +110,9 @@ const App: React.FC = () => {
         </SectionsTileLong>
         <SectionsTileLong>
           <ReduxComp />
+        </SectionsTileLong>
+        <SectionsTileLong>
+          <Recursion />
         </SectionsTileLong>
       </MainAppContainer>
     </ColorContext.Provider>

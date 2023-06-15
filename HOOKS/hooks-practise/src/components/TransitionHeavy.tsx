@@ -47,7 +47,7 @@ const TransitionHeavy = () => {
   return (
     <>
       <Tilediv>useTransition</Tilediv>
-      <ButtonStyled type="button" onClick={showList}>
+      <ButtonStyled type="button" onClick={showList} disabled={isPending}>
         Show long loading list
       </ButtonStyled>
       <TextInfo
