@@ -3,7 +3,7 @@
 import React from "react";
 import { TextInfo, Tilediv } from "../styles/styles";
 
-const Recursion = () => {
+const RecursionFunction = () => {
   // spacja
   const recursionFn: any = (arrayBasic: any) => {
     // przypadek bazowy: gdy mam jeden element w tablicy to go zwracam
@@ -18,8 +18,7 @@ const Recursion = () => {
 
   return (
     <>
-      <Tilediv>Rcursion component and recursion function </Tilediv>
-      <Tilediv>Recursion component: </Tilediv>
+      <Tilediv>Recursion function </Tilediv>
       <TextInfo>
         Write a JavaScript program to compute the sum of an array of integers.
         Example : var array = [1, 2, 3, 4, 5, 6] Expected Output : 21
@@ -32,4 +31,4 @@ const Recursion = () => {
   );
 };
 
-export default Recursion;
+export default RecursionFunction;

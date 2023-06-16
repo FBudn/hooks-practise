@@ -21,7 +21,8 @@ import Query from "./components/Query";
 import Informator from "./components/Informator";
 import LayoutEffectComp from "./components/LayoutEffectComp";
 import ReduxComp from "./components/ReduxComp";
-import Recursion from "./components/Recursion";
+import RecursionFunction from "./components/RecursionFunction";
+import RecursionComponent from "./components/RecursionComponent";
 
 // tworzę kontekstu
 type ColorContextType = string | undefined | null;
@@ -54,6 +55,23 @@ const App: React.FC = () => {
   useLayoutEffect(() => {
     console.log(`I am useLayoutEffect`);
   }, []);
+
+  const familyTree = {
+    name: "Grandmother",
+    children: [
+      {
+        name: "Mother",
+        children: [
+          {
+            name: "Son",
+          },
+          {
+            name: "Doughter",
+          },
+        ],
+      },
+    ],
+  };
 
   return (
     // dostarczam kontekst
@@ -111,9 +129,15 @@ const App: React.FC = () => {
         <SectionsTileLong>
           <ReduxComp />
         </SectionsTileLong>
-        <SectionsTileLong>
-          <Recursion />
-        </SectionsTileLong>
+        <RowContaier>
+          <SectionsTileLong>
+            <RecursionFunction />
+          </SectionsTileLong>
+          <SectionsTileLong>
+            <Tilediv>Recursion component: </Tilediv>
+            <RecursionComponent familyTree={familyTree} />
+          </SectionsTileLong>
+        </RowContaier>
       </MainAppContainer>
     </ColorContext.Provider>
   );
