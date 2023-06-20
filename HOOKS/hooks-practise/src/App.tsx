@@ -23,6 +23,7 @@ import LayoutEffectComp from "./components/LayoutEffectComp";
 import ReduxComp from "./components/ReduxComp";
 import RecursionFunction from "./components/RecursionFunction";
 import RecursionComponent from "./components/RecursionComponent";
+import ApiComponent from "./components/ApiComponent";
 
 // tworzę kontekstu
 type ColorContextType = string | undefined | null;
@@ -138,6 +139,9 @@ const App: React.FC = () => {
             <RecursionComponent familyTree={familyTree} />
           </SectionsTileLong>
         </RowContaier>
+        <SectionsTileLong>
+          <ApiComponent />
+        </SectionsTileLong>
       </MainAppContainer>
     </ColorContext.Provider>
   );
