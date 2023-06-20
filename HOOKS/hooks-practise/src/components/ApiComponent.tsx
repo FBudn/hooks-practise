@@ -16,24 +16,34 @@ const ApiComponent = () => {
 
   const [countryFetched, setCountryFetched] = useState("");
 
-  const [capital, setCapital] = useState("");
+  const [capitalWriten, setCapitalWriten] = useState("");
+  const [capitalFetched, setCapitalFetched] = useState("");
 
   const handleInputCapital = (e: any) => {
-    setCapital(e.target.value);
+    setCapitalWriten(e.target.value);
   };
 
-  let urlCountry = `https://restcountries.com/v3.1/name/poland?fullText=true`;
-  const urlCapital = `https://restcountries.com/v3.1/capital/${capital}`;
   const url = `https://restcountries.com/v3.1/all?fields=name,name`;
 
   const handleCountry = async () => {
-    urlCountry = `https://restcountries.com/v3.1/name/${countryWriten}?fullText=true`;
+    const urlCountry = `https://restcountries.com/v3.1/name/${countryWriten}?fullText=true`;
     try {
       await axios.get(urlCountry).then((response) => {
         setCountryFetched(response.data[0].name.common);
       });
     } catch (err) {
-      console.log(err);
+      setCountryFetched(`Wrong country name`);
+    }
+  };
+
+  const handleCapital = async () => {
+    const urlCapital = `https://restcountries.com/v3.1/capital/${capitalWriten}`;
+    try {
+      await axios.get(urlCapital).then((response) => {
+        setCapitalFetched(response.data[0].capital);
+      });
+    } catch (err) {
+      setCapitalFetched(`Wrong capital name`);
     }
   };
   /* const countriesQuery = useQuery({
@@ -59,15 +69,15 @@ const ApiComponent = () => {
         onChange={handleInputCountry}
         placeholder="Write country name ex. Poland"
       />
-      <ButtonStyled>Find capital</ButtonStyled>
-      <TextInfo>Capital city: </TextInfo>
+      <ButtonStyled onClick={handleCapital}>Find capital</ButtonStyled>
+      <TextInfo>Capital city: {capitalFetched}</TextInfo>
       <Input
         type="text"
         onChange={handleInputCapital}
         placeholder="Write capital name ex. Warsaw"
       />
       <ButtonStyled onClick={handleCountry}>Find country</ButtonStyled>
-      <TextInfo>C: {countryFetched}</TextInfo>
+      <TextInfo>Country: {countryFetched}</TextInfo>
     </>
   );
 };
