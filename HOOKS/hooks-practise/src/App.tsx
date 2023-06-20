@@ -9,6 +9,7 @@ import {
   RowContaier,
   Tilediv,
   SectionsTileLong,
+  TextInfo,
 } from "./styles/styles";
 import ButtonId from "./components/ButtonId";
 import ContextConsumer from "./components/ContextConsumer";
@@ -135,7 +136,8 @@ const App: React.FC = () => {
             <RecursionFunction />
           </SectionsTileLong>
           <SectionsTileLong>
-            <Tilediv>Recursion component: </Tilediv>
+            <Tilediv>Recursion component </Tilediv>
+            <TextInfo>Keep clicking:</TextInfo>
             <RecursionComponent familyTree={familyTree} />
           </SectionsTileLong>
         </RowContaier>

@@ -23,8 +23,12 @@ const RecursionFunction = () => {
         Write a JavaScript program to compute the sum of an array of integers.
         Example : var array = [1, 2, 3, 4, 5, 6] Expected Output : 21
       </TextInfo>
-      <TextInfo>Function code: </TextInfo>
-      <div>function code</div>
+      <div>function code: </div>
+      <TextInfo>
+        `const recursionFn: any = (arrayBasic: any) ={">"} {"{"} <br /> if
+        (arrayBasic.length === 1) return arrayBasic[0]; <br /> return
+        arrayBasic.pop() + recursionFn(arrayBasic); {"}"}`
+      </TextInfo>
       <TextInfo>Function result:</TextInfo>
       <TextInfo>{recursionFn([1, 2, 3, 4, 5, 6], 6)}</TextInfo>
     </>

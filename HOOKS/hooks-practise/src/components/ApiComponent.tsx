@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 /* eslint-disable @typescript-eslint/no-misused-promises */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { useState } from "react";
@@ -7,25 +8,29 @@ import { ButtonStyled, Input, TextInfo } from "../styles/styles";
 
 const ApiComponent = () => {
   const queryClient = useQueryClient();
-  const [country, setCountry] = useState("");
+
+  const [countryWriten, setCountryWriten] = useState("");
   const handleInputCountry = (e: any) => {
-    setCountry(e.target.value);
+    setCountryWriten(e.target.value);
   };
+
+  const [countryFetched, setCountryFetched] = useState("");
+
   const [capital, setCapital] = useState("");
+
   const handleInputCapital = (e: any) => {
     setCapital(e.target.value);
   };
 
-  const COUNTRY: any = [];
-
-  const urlCountry = `https://restcountries.com/v3.1/name/poland?fullText=true`;
+  let urlCountry = `https://restcountries.com/v3.1/name/poland?fullText=true`;
   const urlCapital = `https://restcountries.com/v3.1/capital/${capital}`;
   const url = `https://restcountries.com/v3.1/all?fields=name,name`;
 
   const handleCountry = async () => {
+    urlCountry = `https://restcountries.com/v3.1/name/${countryWriten}?fullText=true`;
     try {
       await axios.get(urlCountry).then((response) => {
-        console.log(response.data[0].name.common);
+        setCountryFetched(response.data[0].name.common);
       });
     } catch (err) {
       console.log(err);
@@ -62,7 +67,7 @@ const ApiComponent = () => {
         placeholder="Write capital name ex. Warsaw"
       />
       <ButtonStyled onClick={handleCountry}>Find country</ButtonStyled>
-      <TextInfo>C: {COUNTRY[0]}</TextInfo>
+      <TextInfo>C: {countryFetched}</TextInfo>
     </>
   );
 };
