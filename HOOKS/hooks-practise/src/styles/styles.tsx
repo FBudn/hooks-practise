@@ -227,3 +227,19 @@ export const InsideSectionDivColumn = styled.div`
   border-right: 1px solid #610c6a;
   border-left: 1px solid #610c6a;
 `;
+
+export const ApiContainer = styled.div`
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  min-height: 14rem;
+  align-items: center;
+`;
+
+export const ColumnContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  justify-content: center;
+  height: 14rem;
+`;
