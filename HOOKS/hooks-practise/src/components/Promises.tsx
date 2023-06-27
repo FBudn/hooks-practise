@@ -43,11 +43,23 @@ const Promises = () => {
       return setRace(message);
     });
 
+  // all
+  const [all, setAll] = useState(``);
+
+  Promise.all([promise1, promise2, promise3])
+    .then((result: any) => {
+      return setAll(result);
+    })
+    .catch((error) => {
+      const { message } = error;
+      return setAll(message);
+    });
+
   return (
     <>
       <Tilediv> Promises </Tilediv>
       <TextInfo>Win the race: {race}</TextInfo>
-      <TextInfo>All Pokemons: </TextInfo>
+      <TextInfo>All Pokemons: {all}</TextInfo>
       <TextInfo>All settled Pokemons: </TextInfo>
       <TextInfo>Any Pokemon: </TextInfo>
       <TextInfo>Pokemons in loop: </TextInfo>
