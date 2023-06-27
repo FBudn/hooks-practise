@@ -11,5 +11,6 @@ Other:
 - Styles: to improve someday
 - Informator: working
 - Add something with data and getting objects from objects, arrays etc. 
- 
+- Tests: add
+- Storybook: add  
 */

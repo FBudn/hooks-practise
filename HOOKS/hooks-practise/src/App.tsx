@@ -25,6 +25,7 @@ import ReduxComp from "./components/ReduxComp";
 import RecursionFunction from "./components/RecursionFunction";
 import RecursionComponent from "./components/RecursionComponent";
 import ApiComponent from "./components/ApiComponent";
+import Promises from "./components/Promises";
 
 // tworzę kontekstu
 type ColorContextType = string | undefined | null;
@@ -143,6 +144,9 @@ const App: React.FC = () => {
         </RowContaier>
         <SectionsTileLong>
           <ApiComponent />
+        </SectionsTileLong>
+        <SectionsTileLong>
+          <Promises />
         </SectionsTileLong>
       </MainAppContainer>
     </ColorContext.Provider>
