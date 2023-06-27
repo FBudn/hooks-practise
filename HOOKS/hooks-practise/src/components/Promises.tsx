@@ -43,6 +43,17 @@ const Promises = () => {
       return setRace(message);
     });
 
+  // any
+  const [any, setAny] = useState(``);
+
+  Promise.any([promise1, promise2, promise3])
+    .then((result: any) => {
+      return setAny(result);
+    })
+    .catch((message) => {
+      return setAny(message);
+    });
+
   // all
   const [all, setAll] = useState(``);
 
@@ -78,7 +89,7 @@ const Promises = () => {
       <TextInfo>Win the race: {race}</TextInfo>
       <TextInfo>All Pokemons: {all}</TextInfo>
       <TextInfo>All settled Pokemons: {allSettled}</TextInfo>
-      <TextInfo>Any Pokemon: </TextInfo>
+      <TextInfo>Any Pokemon: {any}</TextInfo>
       <TextInfo>Pokemons in loop: </TextInfo>
       <TextInfo>Fetched Pokemons: </TextInfo>
     </>
