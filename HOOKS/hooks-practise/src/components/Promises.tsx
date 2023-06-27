@@ -55,12 +55,29 @@ const Promises = () => {
       return setAll(message);
     });
 
+  // allSettled
+  const [allSettled, setAllSettled] = useState(``);
+
+  Promise.allSettled([promise1, promise2, promise3])
+    .then((result: any) => {
+      const showResult = result
+        .map((value: object) => Object.entries(value))
+        .flat()
+        .toString();
+
+      return setAllSettled(showResult);
+    })
+    .catch((error) => {
+      const { message } = error;
+      return setAllSettled(message);
+    });
+
   return (
     <>
       <Tilediv> Promises </Tilediv>
       <TextInfo>Win the race: {race}</TextInfo>
       <TextInfo>All Pokemons: {all}</TextInfo>
-      <TextInfo>All settled Pokemons: </TextInfo>
+      <TextInfo>All settled Pokemons: {allSettled}</TextInfo>
       <TextInfo>Any Pokemon: </TextInfo>
       <TextInfo>Pokemons in loop: </TextInfo>
       <TextInfo>Fetched Pokemons: </TextInfo>
