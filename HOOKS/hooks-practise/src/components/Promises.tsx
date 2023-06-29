@@ -30,7 +30,7 @@ const Promises = () => {
   const promise3 = new Promise((resolve, reject) => {
     const x = 10;
     if (x > 4) {
-      resolve(`Succes1`);
+      resolve(`Succes3`);
     } else {
       reject(new Error(`Error promise3`));
     }
@@ -88,14 +88,14 @@ const Promises = () => {
     });
 
   // for Loop
-  const [forLoop, setForLoop] = useState(``);
+  // const [forLoop, setForLoop] = useState(``);
   const tabPromises = [promise1, promise2, promise3];
   const resolveGetter = (promise: any) => {
     promise
       .then((resolve: any) => {
-        setForLoop(resolve);
+        console.log(resolve);
       })
-      .catch((err: any) => setForLoop(err));
+      .catch((err: any) => console.log(err));
   };
   const asyncFor = async () => {
     console.log(`start`);
@@ -116,7 +116,7 @@ const Promises = () => {
       <ButtonAtom testId="test-button-id" onButtonClick={asyncFor}>
         Start loop
       </ButtonAtom>
-      <TextInfo>Pokemons in loop: {forLoop}</TextInfo>
+      <TextInfo>Pokemons in loop:</TextInfo>
       <TextInfo>Fetched Pokemons: </TextInfo>
     </>
   );
