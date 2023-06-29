@@ -6,11 +6,12 @@ Templates: Everything connected, styled and with neccesary logic
 Pages: Buissnes logic + context and other wrappers 
 
 Other: 
-- Logic: reducer/redux or context + query over states in 4ex. API etc.
+- Logic: reducer/redux or context + query over states in 4ex. API Promises etc.
 - Names: to check
 - Styles: to improve someday
 - Informator: working
 - Add something with data and getting objects from objects, arrays etc. 
 - Tests: add
 - Storybook: add  
+- Responsive design: add
 */

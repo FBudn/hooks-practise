@@ -1,8 +1,12 @@
+/* eslint-disable @typescript-eslint/await-thenable */
+/* eslint-disable no-await-in-loop */
+/* eslint-disable no-plusplus */
 /* eslint-disable @typescript-eslint/no-confusing-void-expression */
 /* eslint-disable @typescript-eslint/restrict-plus-operands */
 /* eslint-disable prefer-template */
 import React, { useState } from "react";
 import { TextInfo, Tilediv } from "../styles/styles";
+import ButtonAtom from "./Atoms/ButtonAtom/ButtonAtom";
 
 const Promises = () => {
   const promise1 = new Promise((resolve, reject) => {
@@ -83,6 +87,25 @@ const Promises = () => {
       return setAllSettled(message);
     });
 
+  // for Loop
+  const [forLoop, setForLoop] = useState(``);
+  const tabPromises = [promise1, promise2, promise3];
+  const resolveGetter = (promise: any) => {
+    promise
+      .then((resolve: any) => {
+        setForLoop(resolve);
+      })
+      .catch((err: any) => setForLoop(err));
+  };
+  const asyncFor = async () => {
+    console.log(`start`);
+    for (let i = 0; i < tabPromises.length; i++) {
+      await resolveGetter(tabPromises[i]);
+    }
+    console.log(`end`);
+  };
+  // asyncFor();
+
   return (
     <>
       <Tilediv> Promises </Tilediv>
@@ -90,7 +113,10 @@ const Promises = () => {
       <TextInfo>All Pokemons: {all}</TextInfo>
       <TextInfo>All settled Pokemons: {allSettled}</TextInfo>
       <TextInfo>Any Pokemon: {any}</TextInfo>
-      <TextInfo>Pokemons in loop: </TextInfo>
+      <ButtonAtom testId="test-button-id" onButtonClick={asyncFor}>
+        Start loop
+      </ButtonAtom>
+      <TextInfo>Pokemons in loop: {forLoop}</TextInfo>
       <TextInfo>Fetched Pokemons: </TextInfo>
     </>
   );
