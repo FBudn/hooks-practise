@@ -42,7 +42,7 @@ const App: React.FC = () => {
   // po prostu useEffect do całości odpalany raz
 
   useEffect(() => {
-    console.log("Hi I am useEffect");
+    console.log("Hi I am useEffect for entire App");
     return () => {
       console.log("I am clean-up function for useEffect");
     };
@@ -114,7 +114,6 @@ const App: React.FC = () => {
             <ReactMemo />
           </SectionsTile>
         </RowContaier>
-
         <RowContaier>
           <SectionsTile>
             <TransitionHeavy />
@@ -154,3 +153,9 @@ const App: React.FC = () => {
 };
 
 export default App;
+
+/*
+        <SectionsTileLong>
+          <Promises />
+        </SectionsTileLong>
+*/

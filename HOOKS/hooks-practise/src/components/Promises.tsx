@@ -39,56 +39,66 @@ const Promises = () => {
   // race
   const [race, setRace] = useState(``);
 
-  Promise.race([promise1, promise2, promise3])
-    .then((result: any) => {
-      return setRace(result);
-    })
-    .catch((message) => {
-      return setRace(message);
-    });
-
+  const promiseRace = async () => {
+    console.log(`start race`);
+    Promise.race([promise1, promise2, promise3])
+      .then((result: any) => {
+        console.log(`race succes`);
+        setRace(result);
+      })
+      .catch((message) => {
+        console.log(`race failed`);
+        return setRace(message);
+      });
+  };
   // any
   const [any, setAny] = useState(``);
 
-  Promise.any([promise1, promise2, promise3])
-    .then((result: any) => {
-      return setAny(result);
-    })
-    .catch((message) => {
-      return setAny(message);
-    });
-
+  const promiseAny = async () => {
+    Promise.any([promise1, promise2, promise3])
+      .then((result: any) => {
+        return setAny(result);
+      })
+      .catch((message) => {
+        return setAny(message);
+      });
+  };
   // all
   const [all, setAll] = useState(``);
 
-  Promise.all([promise1, promise2, promise3])
-    .then((result: any) => {
-      return setAll(result);
-    })
-    .catch((error) => {
-      const { message } = error;
-      return setAll(message);
-    });
+  const promiseAll = async () => {
+    Promise.all([promise1, promise2, promise3])
+      .then((result: any) => {
+        return setAll(result);
+      })
+      .catch((error) => {
+        const { message } = error;
+        return setAll(message);
+      });
+  };
 
   // allSettled
   const [allSettled, setAllSettled] = useState(``);
 
-  Promise.allSettled([promise1, promise2, promise3])
-    .then((result: any) => {
-      const showResult = result
-        .map((value: object) => Object.entries(value))
-        .flat()
-        .toString();
+  const promiseAllSettled = async () => {
+    Promise.allSettled([promise1, promise2, promise3])
+      .then((result: any) => {
+        const showResult = result
+          .map((value: object) => Object.entries(value))
+          .flat()
+          .toString();
 
-      return setAllSettled(showResult);
-    })
-    .catch((error) => {
-      const { message } = error;
-      return setAllSettled(message);
-    });
+        return setAllSettled(showResult);
+      })
+      .catch((error) => {
+        const { message } = error;
+        return setAllSettled(message);
+      });
+  };
 
   // for Loop
   // const [forLoop, setForLoop] = useState(``);
+  /*
   const tabPromises = [promise1, promise2, promise3];
   const resolveGetter = (promise: any) => {
     promise
@@ -104,16 +114,33 @@ const Promises = () => {
     }
     console.log(`end`);
   };
-  // asyncFor();
+  // asyncFor(); */
 
   return (
     <>
       <Tilediv> Promises </Tilediv>
+      <ButtonAtom testId="test-button-id" onButtonClick={promiseRace}>
+        Start race
+      </ButtonAtom>
       <TextInfo>Win the race: {race}</TextInfo>
+      <ButtonAtom testId="test-button-id" onButtonClick={promiseAll}>
+        Show any
+      </ButtonAtom>
       <TextInfo>All Pokemons: {all}</TextInfo>
+      <ButtonAtom testId="test-button-id" onButtonClick={promiseAllSettled}>
+        Show any
+      </ButtonAtom>
       <TextInfo>All settled Pokemons: {allSettled}</TextInfo>
+      <ButtonAtom testId="test-button-id" onButtonClick={promiseAny}>
+        Show any
+      </ButtonAtom>
       <TextInfo>Any Pokemon: {any}</TextInfo>
-      <ButtonAtom testId="test-button-id" onButtonClick={asyncFor}>
+      <ButtonAtom
+        testId="test-button-id"
+        onButtonClick={() => {
+          console.log(`klik`);
+        }}
+      >
         Start loop
       </ButtonAtom>
       <TextInfo>Pokemons in loop:</TextInfo>

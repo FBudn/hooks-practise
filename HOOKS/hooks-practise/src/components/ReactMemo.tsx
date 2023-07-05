@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import ReactMemoChild from "./ReactMemoChild";
 import { ButtonStyled, TextInfo, Tilediv } from "../styles/styles";
 import Informator from "./Informator";
@@ -9,10 +9,10 @@ const ReactMemo = () => {
   const handleCount = () => {
     setCount(count + 1);
   };
-  // pewnie chciałem się upewnić, że ten komponent się renderuje
+  /* pewnie chciałem się upewnić, że ten komponent się renderuje
   useEffect(() => {
     console.log(`ReactMemo parent rendering`);
-  });
+  }, []); */
   return (
     // propsy są w ReactMemoChild żeby sprawdzać czy zmiana triggeruje render
     <>
