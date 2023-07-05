@@ -10,6 +10,7 @@ const Promises = () => {
       resolve(`Succes1`);
     } else {
       reject(`Error promise1`);
+      console.log(`Error promise1`);
     }
   });
 
@@ -17,9 +18,7 @@ const Promises = () => {
     const x = 3;
     if (x > 4) {
       resolve(`Succes2`);
-    } else {
-      reject(`Error promise2`);
-    }
+    } else reject(`Error promise2`);
   });
 
   const promise3 = new Promise((resolve, reject) => {
@@ -35,13 +34,22 @@ const Promises = () => {
   const [race, setRace] = useState(``);
 
   const promiseRace = async () => {
+    await Promise.race([promise1, promise2, promise3])
+      .then((response: any) => {
+        setRace(response);
+      })
+      .catch((error) => {
+        setRace(error);
+      });
+  };
+  /* const promiseRace = async () => {
     try {
       const response: any = await Promise.race([promise1, promise2, promise3]);
       setRace(response);
     } catch (error: any) {
       console.log(error);
     }
-  };
+  }; */
   // any
   const [any, setAny] = useState(``);
 
