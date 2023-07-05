@@ -1,9 +1,4 @@
-/* eslint-disable @typescript-eslint/await-thenable */
-/* eslint-disable no-await-in-loop */
-/* eslint-disable no-plusplus */
-/* eslint-disable @typescript-eslint/no-confusing-void-expression */
-/* eslint-disable @typescript-eslint/restrict-plus-operands */
-/* eslint-disable prefer-template */
+/* eslint-disable prefer-promise-reject-errors */
 import React, { useState } from "react";
 import { TextInfo, Tilediv } from "../styles/styles";
 import ButtonAtom from "./Atoms/ButtonAtom/ButtonAtom";
@@ -14,16 +9,16 @@ const Promises = () => {
     if (x > 4) {
       resolve(`Succes1`);
     } else {
-      reject(new Error(`Error promise1`));
+      reject(`Error promise1`);
     }
   });
 
   const promise2 = new Promise((resolve, reject) => {
     const x = 3;
     if (x > 4) {
-      resolve(`Succes1`);
+      resolve(`Succes2`);
     } else {
-      reject(new Error(`Error promise2`));
+      reject(`Error promise2`);
     }
   });
 
@@ -32,66 +27,64 @@ const Promises = () => {
     if (x > 4) {
       resolve(`Succes3`);
     } else {
-      reject(new Error(`Error promise3`));
+      reject(`Error promise3`);
     }
   });
 
   // race
   const [race, setRace] = useState(``);
 
-  const promiseRace = () => {
-    console.log(`start race`);
-    Promise.race([promise1, promise2, promise3])
-      .then((result: any) => {
-        console.log(`race succes`);
-        setRace(result);
-      })
-      .catch((error) => {
-        console.log(`race failed`);
-        setRace(error);
-      });
+  const promiseRace = async () => {
+    try {
+      const response: any = await Promise.race([promise1, promise2, promise3]);
+      setRace(response);
+    } catch (error: any) {
+      console.log(error);
+    }
   };
   // any
   const [any, setAny] = useState(``);
 
-  const promiseAny = () => {
-    Promise.any([promise1, promise2, promise3])
-      .then((result: any) => {
+  const promiseAny = async () => {
+    try {
+      await Promise.any([promise1, promise2, promise3]).then((result: any) => {
         setAny(result);
-      })
-      .catch((error) => {
-        setAny(error);
       });
+    } catch (error: any) {
+      setAny(error);
+    }
   };
   // all
   const [all, setAll] = useState(``);
 
-  const promiseAll = () => {
-    Promise.all([promise1, promise2, promise3])
-      .then((result: any) => {
+  const promiseAll = async () => {
+    try {
+      await Promise.all([promise1, promise2, promise3]).then((result: any) => {
         setAll(result);
-      })
-      .catch((error) => {
-        setAll(error);
       });
+    } catch (error: any) {
+      setAll(error);
+    }
   };
 
   // allSettled
   const [allSettled, setAllSettled] = useState(``);
 
-  const promiseAllSettled = () => {
-    Promise.allSettled([promise1, promise2, promise3])
-      .then((result: any) => {
-        const showResult = result
-          .map((value: object) => Object.entries(value))
-          .flat()
-          .toString();
+  const promiseAllSettled = async () => {
+    try {
+      await Promise.allSettled([promise1, promise2, promise3]).then(
+        (result: any) => {
+          const showResult = result
+            .map((value: object) => Object.entries(value))
+            .flat()
+            .toString();
 
-        setAllSettled(showResult);
-      })
-      .catch((error) => {
-        setAllSettled(error);
-      });
+          setAllSettled(showResult);
+        },
+      );
+    } catch (error: any) {
+      setAllSettled(error);
+    }
   };
 
   // for Loop
@@ -122,11 +115,11 @@ const Promises = () => {
       </ButtonAtom>
       <TextInfo>Win the race: {race}</TextInfo>
       <ButtonAtom testId="test-button-id" onButtonClick={promiseAll}>
-        Show any
+        Show all
       </ButtonAtom>
       <TextInfo>All Pokemons: {all}</TextInfo>
       <ButtonAtom testId="test-button-id" onButtonClick={promiseAllSettled}>
-        Show any
+        Show all settled
       </ButtonAtom>
       <TextInfo>All settled Pokemons: {allSettled}</TextInfo>
       <ButtonAtom testId="test-button-id" onButtonClick={promiseAny}>
