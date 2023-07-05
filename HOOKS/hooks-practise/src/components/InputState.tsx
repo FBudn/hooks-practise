@@ -1,19 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
 import { Tilediv, Input, TextInfo } from "../styles/styles";
 import Informator from "./Informator";
 
 export interface InputStateProps {
-  handleInputValue: (e: any) => void;
   id: any;
-  text: any;
 }
 // input oparty na useState zadeklarowanym w App.tsx
 
-const InputState: React.FC<InputStateProps> = ({
-  handleInputValue,
-  id,
-  text,
-}) => {
+const InputState: React.FC<InputStateProps> = ({ id }) => {
+  // useState do komponentu InputState
+  const [text, setText] = useState("Empty input now");
+
+  const handleInputValue = (e: any) => {
+    setText(e.target.value);
+  };
   return (
     <>
       <Tilediv>useState</Tilediv>

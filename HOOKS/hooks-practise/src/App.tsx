@@ -1,6 +1,6 @@
 /* eslint-disable import/no-cycle */
 /* eslint-disable import/no-named-as-default */
-import React, { useEffect, useLayoutEffect, useRef, useState } from "react";
+import React, { useEffect, useLayoutEffect, useRef } from "react";
 import InputState from "./components/InputState";
 import InputRef from "./components/InputRef";
 import {
@@ -32,13 +32,6 @@ type ColorContextType = string | undefined | null;
 export const ColorContext = React.createContext<ColorContextType>("green");
 
 const App: React.FC = () => {
-  // useState do komponentu InputState
-  const [text, setText] = useState("Empty input now");
-
-  const handleInputValue = (e: any) => {
-    setText(e.target.value);
-  };
-
   // po prostu useEffect do całości odpalany raz
 
   useEffect(() => {
@@ -88,11 +81,7 @@ const App: React.FC = () => {
             <InputRef ref={ref} id="InputRef" />
           </SectionsTile>
           <SectionsTile>
-            <InputState
-              handleInputValue={handleInputValue}
-              id="Input"
-              text={text}
-            />
+            <InputState id="Input" />
           </SectionsTile>
           <SectionsTile>
             <Tilediv>useId</Tilediv>

@@ -39,48 +39,47 @@ const Promises = () => {
   // race
   const [race, setRace] = useState(``);
 
-  const promiseRace = async () => {
+  const promiseRace = () => {
     console.log(`start race`);
     Promise.race([promise1, promise2, promise3])
       .then((result: any) => {
         console.log(`race succes`);
         setRace(result);
       })
-      .catch((message) => {
+      .catch((error) => {
         console.log(`race failed`);
-        return setRace(message);
+        setRace(error);
       });
   };
   // any
   const [any, setAny] = useState(``);
 
-  const promiseAny = async () => {
+  const promiseAny = () => {
     Promise.any([promise1, promise2, promise3])
       .then((result: any) => {
-        return setAny(result);
+        setAny(result);
       })
-      .catch((message) => {
-        return setAny(message);
+      .catch((error) => {
+        setAny(error);
       });
   };
   // all
   const [all, setAll] = useState(``);
 
-  const promiseAll = async () => {
+  const promiseAll = () => {
     Promise.all([promise1, promise2, promise3])
       .then((result: any) => {
-        return setAll(result);
+        setAll(result);
       })
       .catch((error) => {
-        const { message } = error;
-        return setAll(message);
+        setAll(error);
       });
   };
 
   // allSettled
   const [allSettled, setAllSettled] = useState(``);
 
-  const promiseAllSettled = async () => {
+  const promiseAllSettled = () => {
     Promise.allSettled([promise1, promise2, promise3])
       .then((result: any) => {
         const showResult = result
@@ -88,11 +87,10 @@ const Promises = () => {
           .flat()
           .toString();
 
-        return setAllSettled(showResult);
+        setAllSettled(showResult);
       })
       .catch((error) => {
-        const { message } = error;
-        return setAllSettled(message);
+        setAllSettled(error);
       });
   };
 
