@@ -1,16 +1,23 @@
 /* eslint-disable prefer-promise-reject-errors */
 import React, { useState } from "react";
+import axios from "axios";
 import { TextInfo, Tilediv } from "../styles/styles";
 import ButtonAtom from "./Atoms/ButtonAtom/ButtonAtom";
+import { ACTIONS, dispatch } from "./PromisesReducer";
 
 const Promises = () => {
+  const pokemonRace = (pokemon: any) => {
+    dispatch({ type: ACTIONS.GET_RACE, payload: pokemon });
+  };
+
   const promise1 = new Promise((resolve, reject) => {
-    const x = 5;
-    if (x > 4) {
-      resolve(`Succes1`);
-    } else {
-      reject(`Error promise1`);
-      console.log(`Error promise1`);
+    try {
+      const response = await axios.get(
+        `https://pokeapi.co/api/v2/pokemon?limit=1`,
+      );
+      resolve(response.data.results[0].name);
+    } catch {
+      reject(`Race error`);
     }
   });
 
@@ -25,9 +32,9 @@ const Promises = () => {
     const x = 10;
     if (x > 4) {
       resolve(`Succes3`);
-    } else {
-      reject(`Error promise3`);
     }
+
+    reject(`Error promise3`);
   });
 
   // race
@@ -36,20 +43,13 @@ const Promises = () => {
   const promiseRace = async () => {
     await Promise.race([promise1, promise2, promise3])
       .then((response: any) => {
-        setRace(response);
+        pokemonRace(response);
       })
       .catch((error) => {
         setRace(error);
       });
   };
-  /* const promiseRace = async () => {
-    try {
-      const response: any = await Promise.race([promise1, promise2, promise3]);
-      setRace(response);
-    } catch (error: any) {
-      console.log(error);
-    }
-  }; */
+
   // any
   const [any, setAny] = useState(``);
 
