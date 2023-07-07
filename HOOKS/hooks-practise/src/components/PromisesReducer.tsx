@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/rules-of-hooks */
-import { useReducer } from "react";
+/* import { useReducer } from "react";
 
 export const ACTIONS = {
   GET_RACE: "get_RACE",
@@ -26,3 +26,4 @@ export const reducer = (state: any, action: any) => {
 export const [raceState, dispatch] = useReducer(reducer, {
   name: `button not clicked`,
 });
+*/
