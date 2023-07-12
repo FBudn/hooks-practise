@@ -1,102 +1,35 @@
 /* eslint-disable prefer-promise-reject-errors */
-import React, { useState, useReducer } from "react";
+import React, { useState } from "react";
 import axios from "axios";
 import { TextInfo, Tilediv } from "../styles/styles";
 import ButtonAtom from "./Atoms/ButtonAtom/ButtonAtom";
 
 const Promises = () => {
-  const ACTIONS = {
-    GET_RACE: "get_RACE",
-    GET_ALL: "get_ALL",
-    GET_ALL_SETTLED: "get_ALL_SETTLED",
-    GET_ANY: "get_ANY",
-  };
-
-  const reducer = (state: any, action: any) => {
-    switch (action.type) {
-      case ACTIONS.GET_RACE:
-        return { name: state.name };
-      case ACTIONS.GET_ALL:
-        return { name: state.name };
-      case ACTIONS.GET_ALL_SETTLED:
-        return { name: state.name };
-      case ACTIONS.GET_ANY:
-        return { name: state.name };
-      default:
-        return state;
-    }
-  };
-
-  const [raceState, dispatch] = useReducer(reducer, {
-    name: `button not clicked`,
-  });
-  const pokemonRace = (pokemon: any) => {
-    dispatch({ type: ACTIONS.GET_RACE, payload: pokemon });
-  };
-
   const promise1 = async () => {
-    try {
-      await axios
-        .get(`https://pokeapi.co/api/v2/pokemon?limit=1`)
-        .then((response) => {
-          pokemonRace(response.data.results[0].name);
-        });
-    } catch (error) {
-      pokemonRace(error);
-      // console.log(error)
-    }
-  };
-  const promise2 = async () => {
-    try {
-      await axios
-        .get(`https://pokeapi.co/api/v2/pokemon?limit=1`)
-        .then((response) => {
-          pokemonRace(response.data.results[0].name);
-        });
-    } catch (error) {
-      pokemonRace(error);
-      // console.log(error)
-    }
-  };
-  const promise3 = async () => {
-    const getMe = axios
-      .get(`https://pokeapi.co/api/v2/pokemon?limit=1`)
-      .then((response) => {
-        pokemonRace(response.data.results[0].name);
-        console.log(response.data.results[0].name);
-      });
-    await pokemonRace(getMe);
+    const result = await axios.get(`https://pokeapi.co/api/v2/pokemon?limit=1`);
+    return result.data.results[0].name;
   };
 
-  //    pokemonRace(response.data.results[0].name);
-  /* const test = axios
-    .get(`https://pokeapi.co/api/v2/pokemon?limit=1`)
-    .then((response) => {
-      console.log(response.data.results[0].name);
-    }); */
-  // console.log(test);
-  /* const promise2 = new Promise((resolve, reject) => {
-    const x = 7;
+  const promise2 = async () => {
+    const result = await axios.get(`https://pokeapi.co/api/v2/pokemon?limit=2`);
+    return result.data.results[1].name;
+  };
+  const promise3 = new Promise((resolve, reject) => {
+    const x = 6;
     if (x > 4) {
-      resolve(`Succes2`);
-    } else reject(`Error promise2`);
+      const xx = async () => {
+        const result = await axios.get(
+          `https://pokeapi.co/api/v2/pokemon?limit=3`,
+        );
+        return result.data.results[2].name;
+      };
+      resolve(xx());
+    } else reject(`promise3 error`);
   });
 
-  const promise3 = new Promise((resolve, reject) => {
-    const x = 10;
-    if (x > 4) {
-      resolve(`Succes3`);
-    }
-
-    reject(`Error promise3`);
-  }); */
-
-  // race
-  // const [race, setRace] = useState(``);
-
-  const promiseRace = async () => {
-    await Promise.race([promise1, promise2, promise3])
-      .then((response: any) => {
+  const promiseRace = () => {
+    Promise.race([promise1(), promise2(), promise3])
+      .then((response) => {
         console.log(response);
       })
       .catch((error) => {
@@ -109,9 +42,11 @@ const Promises = () => {
 
   const promiseAny = async () => {
     try {
-      await Promise.any([promise1, promise2, promise3]).then((result: any) => {
-        setAny(result);
-      });
+      await Promise.any([promise1(), promise2(), promise3]).then(
+        (result: any) => {
+          setAny(result);
+        },
+      );
     } catch (error: any) {
       setAny(error);
     }
@@ -121,9 +56,11 @@ const Promises = () => {
 
   const promiseAll = async () => {
     try {
-      await Promise.all([promise1, promise2, promise3]).then((result: any) => {
-        setAll(result);
-      });
+      await Promise.all([promise1(), promise2(), promise3]).then(
+        (result: any) => {
+          setAll(result);
+        },
+      );
     } catch (error: any) {
       setAll(error);
     }
@@ -134,7 +71,7 @@ const Promises = () => {
 
   const promiseAllSettled = async () => {
     try {
-      await Promise.allSettled([promise1, promise2, promise3]).then(
+      await Promise.allSettled([promise1(), promise2(), promise3]).then(
         (result: any) => {
           const showResult = result
             .map((value: object) => Object.entries(value))
@@ -152,7 +89,7 @@ const Promises = () => {
   // for Loop
   // const [forLoop, setForLoop] = useState(``);
   /*
-  const tabPromises = [promise1, promise2, promise3];
+  const tabPromises = [promise1(), promise2(), promise3];
   const resolveGetter = (promise: any) => {
     promise
       .then((resolve: any) => {
@@ -175,7 +112,7 @@ const Promises = () => {
       <ButtonAtom testId="test-button-id" onButtonClick={promiseRace}>
         Start race
       </ButtonAtom>
-      <TextInfo>Win the race: {raceState.name}</TextInfo>
+      <TextInfo>Win the race: </TextInfo>
       <ButtonAtom testId="test-button-id" onButtonClick={promiseAll}>
         Show all
       </ButtonAtom>
