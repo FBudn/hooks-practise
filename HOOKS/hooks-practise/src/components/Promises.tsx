@@ -1,3 +1,7 @@
+/* eslint-disable @typescript-eslint/no-confusing-void-expression */
+/* eslint-disable @typescript-eslint/await-thenable */
+/* eslint-disable no-await-in-loop */
+/* eslint-disable no-plusplus */
 /* eslint-disable prefer-promise-reject-errors */
 import React, { useState } from "react";
 import axios from "axios";
@@ -88,15 +92,16 @@ const Promises = () => {
   };
 
   // for Loop
-  // const [forLoop, setForLoop] = useState(``);
-  /*
+
   const tabPromises = [promise1(), promise2(), promise3];
   const resolveGetter = (promise: any) => {
     promise
       .then((resolve: any) => {
         console.log(resolve);
       })
-      .catch((err: any) => console.log(err));
+      .catch((err: any) => {
+        console.log(err);
+      });
   };
   const asyncFor = async () => {
     console.log(`start`);
@@ -105,7 +110,7 @@ const Promises = () => {
     }
     console.log(`end`);
   };
-  // asyncFor(); */
+  // asyncFor();
 
   return (
     <>
@@ -126,14 +131,10 @@ const Promises = () => {
         Show any
       </ButtonAtom>
       <TextInfo>Any Pokemon: {any}</TextInfo>
-      <ButtonAtom
-        testId="test-button-id"
-        onButtonClick={() => {
-          console.log(`klik`);
-        }}
-      >
+      <ButtonAtom testId="test-button-id" onButtonClick={asyncFor}>
         Start loop
       </ButtonAtom>
+
       <TextInfo>Pokemons in loop:</TextInfo>
       <TextInfo>Fetched Pokemons: </TextInfo>
     </>
