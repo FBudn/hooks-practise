@@ -9,24 +9,24 @@ import { TextInfo, Tilediv } from "../styles/styles";
 import ButtonAtom from "./Atoms/ButtonAtom/ButtonAtom";
 
 const Promises = () => {
-  const promise1 = async () => {
+  const promiseFunction1 = async () => {
     const result = await axios.get(`https://pokeapi.co/api/v2/pokemon?limit=1`);
     return result.data.results[0].name;
   };
 
-  const promise2 = async () => {
+  const promiseFunction2 = async () => {
     const result = await axios.get(`https://pokeapi.co/api/v2/pokemon?limit=2`);
     return result.data.results[1].name;
   };
   const promise3 = new Promise((resolve, reject) => {
     try {
-      const xx = async () => {
+      const getPokemon = async () => {
         const result = await axios.get(
           `https://pokeapi.co/api/v2/pokemon?limit=3`,
         );
         return result.data.results[2].name;
       };
-      resolve(xx());
+      resolve(getPokemon());
     } catch {
       reject(`promise3 error`);
     }
@@ -35,7 +35,7 @@ const Promises = () => {
   // race
   const [race, setRace] = useState(``);
   const promiseRace = () => {
-    Promise.race([promise1(), promise2(), promise3])
+    Promise.race([promiseFunction1(), promiseFunction2(), promise3])
       .then((response) => {
         setRace(response);
       })
@@ -49,11 +49,13 @@ const Promises = () => {
 
   const promiseAny = async () => {
     try {
-      await Promise.any([promise1(), promise2(), promise3]).then(
-        (result: any) => {
-          setAny(result);
-        },
-      );
+      await Promise.any([
+        promiseFunction1(),
+        promiseFunction2(),
+        promise3,
+      ]).then((result: any) => {
+        setAny(result);
+      });
     } catch (error: any) {
       setAny(error);
     }
@@ -63,11 +65,13 @@ const Promises = () => {
 
   const promiseAll = async () => {
     try {
-      await Promise.all([promise1(), promise2(), promise3]).then(
-        (result: any) => {
-          setAll(result.join(` | `));
-        },
-      );
+      await Promise.all([
+        promiseFunction1(),
+        promiseFunction2(),
+        promise3,
+      ]).then((result: any) => {
+        setAll(result.join(` | `));
+      });
     } catch (error: any) {
       setAll(error);
     }
@@ -78,22 +82,24 @@ const Promises = () => {
 
   const promiseAllSettled = async () => {
     try {
-      await Promise.allSettled([promise1(), promise2(), promise3]).then(
-        (result: any) => {
-          const test = result.map((el: any) =>
-            Object.entries(el).flat().join(" "),
-          );
-          setAllSettled(test.join(" | "));
-        },
-      );
+      await Promise.allSettled([
+        promiseFunction1(),
+        promiseFunction2(),
+        promise3,
+      ]).then((result: any) => {
+        const test = result.map((el: any) =>
+          Object.entries(el).flat().join(" "),
+        );
+        setAllSettled(test.join(" | "));
+      });
     } catch (error: any) {
       setAllSettled(error);
     }
   };
 
-  // for Loop
+  // async for loop
 
-  const tabPromises = [promise1(), promise2(), promise3];
+  const tabPromises = [promiseFunction1(), promiseFunction2(), promise3];
   const resolveGetter = (promise: any) => {
     promise
       .then((resolve: any) => {
@@ -110,7 +116,6 @@ const Promises = () => {
     }
     console.log(`end`);
   };
-  // asyncFor();
 
   return (
     <>

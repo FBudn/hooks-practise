@@ -21,9 +21,9 @@ const ApiComponent = () => {
   const countriesQuery = useQuery({
     queryKey: ["countries"],
     queryFn: async () => {
-      await axios.get(url).then((response) => {
-        setDefaultCountry(response.data[0].capital);
-      });
+      const result = await axios.get(url);
+      setDefaultCountry(result.data[0].capital);
+      return result.data[0].capital;
     },
   });
 
@@ -72,7 +72,7 @@ const ApiComponent = () => {
   };
 
   if (countriesQuery.isLoading) return <h1> Loading... </h1>;
-  if (!countriesQuery.isError) return <h1> error</h1>;
+  if (countriesQuery.isError) return <h1> error</h1>;
 
   return (
     <>
