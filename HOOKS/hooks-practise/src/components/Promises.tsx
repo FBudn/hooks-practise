@@ -15,8 +15,7 @@ const Promises = () => {
     return result.data.results[1].name;
   };
   const promise3 = new Promise((resolve, reject) => {
-    const x = 6;
-    if (x > 4) {
+    try {
       const xx = async () => {
         const result = await axios.get(
           `https://pokeapi.co/api/v2/pokemon?limit=3`,
@@ -24,16 +23,20 @@ const Promises = () => {
         return result.data.results[2].name;
       };
       resolve(xx());
-    } else reject(`promise3 error`);
+    } catch {
+      reject(`promise3 error`);
+    }
   });
 
+  // race
+  const [race, setRace] = useState(``);
   const promiseRace = () => {
     Promise.race([promise1(), promise2(), promise3])
       .then((response) => {
-        console.log(response);
+        setRace(response);
       })
       .catch((error) => {
-        console.log(error);
+        setRace(error);
       });
   };
 
@@ -112,7 +115,7 @@ const Promises = () => {
       <ButtonAtom testId="test-button-id" onButtonClick={promiseRace}>
         Start race
       </ButtonAtom>
-      <TextInfo>Win the race: </TextInfo>
+      <TextInfo>Win the race: {race}</TextInfo>
       <ButtonAtom testId="test-button-id" onButtonClick={promiseAll}>
         Show all
       </ButtonAtom>
