@@ -61,7 +61,7 @@ const Promises = () => {
     try {
       await Promise.all([promise1(), promise2(), promise3]).then(
         (result: any) => {
-          setAll(result);
+          setAll(result.join(` | `));
         },
       );
     } catch (error: any) {
@@ -76,12 +76,10 @@ const Promises = () => {
     try {
       await Promise.allSettled([promise1(), promise2(), promise3]).then(
         (result: any) => {
-          const showResult = result
-            .map((value: object) => Object.entries(value))
-            .flat()
-            .toString();
-
-          setAllSettled(showResult);
+          const test = result.map((el: any) =>
+            Object.entries(el).flat().join(" "),
+          );
+          setAllSettled(test.join(" | "));
         },
       );
     } catch (error: any) {
