@@ -1,10 +1,3 @@
-/* eslint-disable @typescript-eslint/no-floating-promises */
-/* eslint-disable @typescript-eslint/no-shadow */
-/* eslint-disable @typescript-eslint/no-unused-vars */
-/* eslint-disable import/no-extraneous-dependencies */
-/* eslint-disable @typescript-eslint/no-use-before-define */
-/* eslint-disable no-promise-executor-return */
-/* eslint-disable @typescript-eslint/promise-function-async */
 import React from "react";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { ButtonStyled, TextInfo, Tilediv } from "../styles/styles";
@@ -21,25 +14,34 @@ const POSTS = [
 const Query = () => {
   const queryClient = useQueryClient(); // zwraca tylko do co zrobiliśmy w index html
 
+  // opóźnienie oparte na obietnicy
+  const wait = async (duration: any) => {
+    await new Promise((resolve) => {
+      setTimeout(resolve, duration);
+    });
+  };
+
   // tu cały useQuery
   const postsQuery = useQuery({
     queryKey: ["posts"],
-    queryFn: () => wait(1000).then(() => [...POSTS]), // opóźniam "pobieranie" danych z tablicy POSTS
+    queryFn: async () => {
+      await wait(1000).then(() => [...POSTS]);
+      return [...POSTS];
+    }, // opóźniam "pobieranie" danych z tablicy POSTS
   });
 
-  // opóźnienie oparte na obietnicy
-  const wait = (duration: any) => {
-    return new Promise((resolve) => setTimeout(resolve, duration));
-  };
   // dorzucanie kolejnego postu do tablicy
   const newPostsMutation = useMutation({
-    mutationFn: (title: any) => {
-      return wait(1000).then(() =>
+    mutationFn: async (title: any) => {
+      await wait(1000).then(() =>
         POSTS.push({ id: crypto.randomUUID(), title }),
       );
     },
     onSuccess: () => {
-      queryClient.invalidateQueries(["posts"]);
+      queryClient
+        .invalidateQueries(["posts"])
+        .then((response) => response)
+        .catch((error) => error);
     },
   });
 
@@ -53,7 +55,7 @@ const Query = () => {
     <>
       <Tilediv>React Query</Tilediv>
       <div>
-        {postsQuery.data?.map((post) => (
+        {postsQuery?.data?.map((post: any) => (
           <TextInfo key={post.id}>{post.title}</TextInfo>
         ))}
       </div>
