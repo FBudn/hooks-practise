@@ -1,7 +1,5 @@
-/* eslint-disable @typescript-eslint/no-misused-promises */
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { useState } from "react";
-import { useQuery, useQueryClient } from "@tanstack/react-query";
+import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import {
   ApiContainer,
@@ -13,7 +11,7 @@ import {
 } from "../styles/styles";
 
 const ApiComponent = () => {
-  const queryClient = useQueryClient();
+  // const queryClient = useQueryClient();
 
   const [defaultCountry, setDefaultCountry] = useState("");
   const url = `https://restcountries.com/v3.1/name/spain?fullText=true`;
@@ -49,7 +47,7 @@ const ApiComponent = () => {
   // funkcja do buttona pobierająca dane na klika
   // uzupełniam url do API wartością wpisaną z inputa "write country" czyli stanem "countryWriten"
   // dane z urla ustawiam jako dodatkowy stan "countryFetched" żeby wyświetlić odpowiednią stolicę
-  const handleCapital = async () => {
+  const getCapital = async () => {
     const urlCountry = `https://restcountries.com/v3.1/name/${countryWriten}?fullText=true`;
     try {
       await axios.get(urlCountry).then((response) => {
@@ -59,8 +57,15 @@ const ApiComponent = () => {
       setCapitalFetched(`Wrong country name`);
     }
   };
+  const handleCapital = () => {
+    getCapital()
+      .then((res) => res)
+      .catch((error) => {
+        console.log(error);
+      });
+  };
 
-  const handleCountry = async () => {
+  const getCountry = async () => {
     const urlCapital = `https://restcountries.com/v3.1/capital/${capitalWriten}`;
     try {
       await axios.get(urlCapital).then((response) => {
@@ -69,6 +74,13 @@ const ApiComponent = () => {
     } catch (err) {
       setCountryFetched(`Wrong capital name or it is not capital`);
     }
+  };
+  const handleCountry = () => {
+    getCountry()
+      .then((res) => res)
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
   if (countriesQuery.isLoading) return <h1> Loading... </h1>;
