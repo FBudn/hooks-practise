@@ -17,7 +17,7 @@ const CallbackChild: React.FC<CallbackChildProps> = ({
   // useEffect do podglądania kiedy się renderuje ten komponent - wpięty jest do CallbackAndMemo komponentu
   useEffect(() => {
     console.log("CallbackChild useEffect");
-  }, []);
+  }, [onClickButton]);
 
   return (
     <CallbackAndMemoContainer>

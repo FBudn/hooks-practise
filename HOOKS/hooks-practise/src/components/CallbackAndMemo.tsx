@@ -52,7 +52,7 @@ const CallbackAndMemo: React.FC = () => {
         CallbackChild component
       </CallbackChild>
       <ButtonStyled type="button" onClick={handleCount}>
-        useMemo Trigger Test: {count}
+        useMemo & useCallback Trigger Test: {count}
       </ButtonStyled>
       <ButtonStyled type="button" onClick={handleCountMemo}>
         useMemo Trigger: {useMemoState}
