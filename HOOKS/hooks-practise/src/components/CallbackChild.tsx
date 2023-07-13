@@ -23,7 +23,7 @@ const CallbackChild: React.FC<CallbackChildProps> = ({
     <CallbackAndMemoContainer>
       <TextInfo> {children} </TextInfo>
       <ButtonStyled type="button" onClick={onClickButton}>
-        I trigger callback function
+        I call useCallback function
       </ButtonStyled>
     </CallbackAndMemoContainer>
   );
