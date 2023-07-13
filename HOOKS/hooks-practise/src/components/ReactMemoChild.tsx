@@ -14,7 +14,7 @@ const ReactMemoChild: React.FC<ReactMemoChildProps> = ({
 }) => {
   // sprawdzam kiedy się renderuje i czy działa memo
   useEffect(() => {
-    console.log(`ReactMemoChild: I have just rendered `);
+    console.log(`ReactMemoChild useEffect `);
   });
   return (
     <ReactMemoChildStyled>

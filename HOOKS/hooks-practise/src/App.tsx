@@ -35,9 +35,9 @@ const App: React.FC = () => {
   // po prostu useEffect do całości odpalany raz
 
   useEffect(() => {
-    console.log("Hi I am useEffect for entire App");
+    console.log("App useEffect");
     return () => {
-      console.log("I am clean-up function for useEffect");
+      console.log("App clean-up function for useEffect");
     };
   }, []);
 
@@ -49,7 +49,7 @@ const App: React.FC = () => {
 
   // useLayoutEffect po prostu do całości
   useLayoutEffect(() => {
-    console.log(`I am useLayoutEffect`);
+    console.log(`App useLayoutEffect`);
   }, []);
 
   const familyTree = {
@@ -97,7 +97,7 @@ const App: React.FC = () => {
             <ContextConsumer />
           </SectionsTile>
           <SectionsTile>
-            <CallbackAndMemo number1={1} number2={2} />
+            <CallbackAndMemo />
           </SectionsTile>
           <SectionsTile>
             <ReactMemo />

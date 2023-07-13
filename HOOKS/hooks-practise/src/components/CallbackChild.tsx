@@ -7,19 +7,23 @@ import {
 
 export interface CallbackChildProps {
   onClickButton: any;
+  children: any;
 }
 
-const CallbackChild: React.FC<CallbackChildProps> = ({ onClickButton }) => {
+const CallbackChild: React.FC<CallbackChildProps> = ({
+  onClickButton,
+  children,
+}) => {
   // useEffect do podglądania kiedy się renderuje ten komponent - wpięty jest do CallbackAndMemo komponentu
   useEffect(() => {
-    console.log("CallbackChildComponent");
+    console.log("CallbackChild useEffect");
   }, []);
 
   return (
     <CallbackAndMemoContainer>
-      <TextInfo>I am showing useCallback in action</TextInfo>
+      <TextInfo> {children} </TextInfo>
       <ButtonStyled type="button" onClick={onClickButton}>
-        Show callback argument
+        I trigger callback function
       </ButtonStyled>
     </CallbackAndMemoContainer>
   );
